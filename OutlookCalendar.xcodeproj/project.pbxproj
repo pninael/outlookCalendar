@@ -1,0 +1,449 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4771B7181FFDC9FC00144A4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4771B7171FFDC9FC00144A4B /* AppDelegate.swift */; };
+		4771B71A1FFDC9FC00144A4B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4771B7191FFDC9FC00144A4B /* ViewController.swift */; };
+		4771B71D1FFDC9FC00144A4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4771B71B1FFDC9FC00144A4B /* Main.storyboard */; };
+		4771B71F1FFDC9FC00144A4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4771B71E1FFDC9FC00144A4B /* Assets.xcassets */; };
+		4771B7221FFDC9FC00144A4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4771B7201FFDC9FC00144A4B /* LaunchScreen.storyboard */; };
+		4771B72D1FFDC9FC00144A4B /* OutlookCalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4771B72C1FFDC9FC00144A4B /* OutlookCalendarTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4771B7291FFDC9FC00144A4B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4771B70C1FFDC9FC00144A4B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4771B7131FFDC9FC00144A4B;
+			remoteInfo = OutlookCalendar;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4771B7141FFDC9FC00144A4B /* OutlookCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutlookCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4771B7171FFDC9FC00144A4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4771B7191FFDC9FC00144A4B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4771B71C1FFDC9FC00144A4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4771B71E1FFDC9FC00144A4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4771B7211FFDC9FC00144A4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4771B7231FFDC9FC00144A4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4771B7281FFDC9FC00144A4B /* OutlookCalendarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OutlookCalendarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4771B72C1FFDC9FC00144A4B /* OutlookCalendarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlookCalendarTests.swift; sourceTree = "<group>"; };
+		4771B72E1FFDC9FC00144A4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4771B7111FFDC9FC00144A4B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4771B7251FFDC9FC00144A4B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4771B70B1FFDC9FC00144A4B = {
+			isa = PBXGroup;
+			children = (
+				4771B7161FFDC9FC00144A4B /* OutlookCalendar */,
+				4771B72B1FFDC9FC00144A4B /* OutlookCalendarTests */,
+				4771B7151FFDC9FC00144A4B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4771B7151FFDC9FC00144A4B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4771B7141FFDC9FC00144A4B /* OutlookCalendar.app */,
+				4771B7281FFDC9FC00144A4B /* OutlookCalendarTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4771B7161FFDC9FC00144A4B /* OutlookCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				4771B7171FFDC9FC00144A4B /* AppDelegate.swift */,
+				4771B7191FFDC9FC00144A4B /* ViewController.swift */,
+				4771B71B1FFDC9FC00144A4B /* Main.storyboard */,
+				4771B71E1FFDC9FC00144A4B /* Assets.xcassets */,
+				4771B7201FFDC9FC00144A4B /* LaunchScreen.storyboard */,
+				4771B7231FFDC9FC00144A4B /* Info.plist */,
+			);
+			path = OutlookCalendar;
+			sourceTree = "<group>";
+		};
+		4771B72B1FFDC9FC00144A4B /* OutlookCalendarTests */ = {
+			isa = PBXGroup;
+			children = (
+				4771B72C1FFDC9FC00144A4B /* OutlookCalendarTests.swift */,
+				4771B72E1FFDC9FC00144A4B /* Info.plist */,
+			);
+			path = OutlookCalendarTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4771B7131FFDC9FC00144A4B /* OutlookCalendar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4771B7311FFDC9FC00144A4B /* Build configuration list for PBXNativeTarget "OutlookCalendar" */;
+			buildPhases = (
+				4771B7101FFDC9FC00144A4B /* Sources */,
+				4771B7111FFDC9FC00144A4B /* Frameworks */,
+				4771B7121FFDC9FC00144A4B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OutlookCalendar;
+			productName = OutlookCalendar;
+			productReference = 4771B7141FFDC9FC00144A4B /* OutlookCalendar.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4771B7271FFDC9FC00144A4B /* OutlookCalendarTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4771B7341FFDC9FC00144A4B /* Build configuration list for PBXNativeTarget "OutlookCalendarTests" */;
+			buildPhases = (
+				4771B7241FFDC9FC00144A4B /* Sources */,
+				4771B7251FFDC9FC00144A4B /* Frameworks */,
+				4771B7261FFDC9FC00144A4B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4771B72A1FFDC9FC00144A4B /* PBXTargetDependency */,
+			);
+			name = OutlookCalendarTests;
+			productName = OutlookCalendarTests;
+			productReference = 4771B7281FFDC9FC00144A4B /* OutlookCalendarTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4771B70C1FFDC9FC00144A4B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "Pnina Eliyahu";
+				TargetAttributes = {
+					4771B7131FFDC9FC00144A4B = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+					};
+					4771B7271FFDC9FC00144A4B = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4771B7131FFDC9FC00144A4B;
+					};
+				};
+			};
+			buildConfigurationList = 4771B70F1FFDC9FC00144A4B /* Build configuration list for PBXProject "OutlookCalendar" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4771B70B1FFDC9FC00144A4B;
+			productRefGroup = 4771B7151FFDC9FC00144A4B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4771B7131FFDC9FC00144A4B /* OutlookCalendar */,
+				4771B7271FFDC9FC00144A4B /* OutlookCalendarTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4771B7121FFDC9FC00144A4B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4771B7221FFDC9FC00144A4B /* LaunchScreen.storyboard in Resources */,
+				4771B71F1FFDC9FC00144A4B /* Assets.xcassets in Resources */,
+				4771B71D1FFDC9FC00144A4B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4771B7261FFDC9FC00144A4B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4771B7101FFDC9FC00144A4B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4771B71A1FFDC9FC00144A4B /* ViewController.swift in Sources */,
+				4771B7181FFDC9FC00144A4B /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4771B7241FFDC9FC00144A4B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4771B72D1FFDC9FC00144A4B /* OutlookCalendarTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4771B72A1FFDC9FC00144A4B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4771B7131FFDC9FC00144A4B /* OutlookCalendar */;
+			targetProxy = 4771B7291FFDC9FC00144A4B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4771B71B1FFDC9FC00144A4B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4771B71C1FFDC9FC00144A4B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4771B7201FFDC9FC00144A4B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4771B7211FFDC9FC00144A4B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4771B72F1FFDC9FC00144A4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4771B7301FFDC9FC00144A4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4771B7321FFDC9FC00144A4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UBF8T346G9;
+				INFOPLIST_FILE = OutlookCalendar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Pninae.OutlookCalendar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4771B7331FFDC9FC00144A4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UBF8T346G9;
+				INFOPLIST_FILE = OutlookCalendar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Pninae.OutlookCalendar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4771B7351FFDC9FC00144A4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UBF8T346G9;
+				INFOPLIST_FILE = OutlookCalendarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Pninae.OutlookCalendarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OutlookCalendar.app/OutlookCalendar";
+			};
+			name = Debug;
+		};
+		4771B7361FFDC9FC00144A4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UBF8T346G9;
+				INFOPLIST_FILE = OutlookCalendarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Pninae.OutlookCalendarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OutlookCalendar.app/OutlookCalendar";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4771B70F1FFDC9FC00144A4B /* Build configuration list for PBXProject "OutlookCalendar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4771B72F1FFDC9FC00144A4B /* Debug */,
+				4771B7301FFDC9FC00144A4B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4771B7311FFDC9FC00144A4B /* Build configuration list for PBXNativeTarget "OutlookCalendar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4771B7321FFDC9FC00144A4B /* Debug */,
+				4771B7331FFDC9FC00144A4B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4771B7341FFDC9FC00144A4B /* Build configuration list for PBXNativeTarget "OutlookCalendarTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4771B7351FFDC9FC00144A4B /* Debug */,
+				4771B7361FFDC9FC00144A4B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4771B70C1FFDC9FC00144A4B /* Project object */;
+}
