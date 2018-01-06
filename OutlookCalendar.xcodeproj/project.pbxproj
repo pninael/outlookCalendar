@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4701840620003810004671B6 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4701840520003810004671B6 /* CalendarViewController.swift */; };
+		4701840820003B29004671B6 /* CalendarDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4701840720003B29004671B6 /* CalendarDayCollectionViewCell.swift */; };
 		4771B7181FFDC9FC00144A4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4771B7171FFDC9FC00144A4B /* AppDelegate.swift */; };
-		4771B71A1FFDC9FC00144A4B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4771B7191FFDC9FC00144A4B /* ViewController.swift */; };
-		4771B71D1FFDC9FC00144A4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4771B71B1FFDC9FC00144A4B /* Main.storyboard */; };
 		4771B71F1FFDC9FC00144A4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4771B71E1FFDC9FC00144A4B /* Assets.xcassets */; };
 		4771B7221FFDC9FC00144A4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4771B7201FFDC9FC00144A4B /* LaunchScreen.storyboard */; };
 		4771B72D1FFDC9FC00144A4B /* OutlookCalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4771B72C1FFDC9FC00144A4B /* OutlookCalendarTests.swift */; };
@@ -26,10 +26,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4701840520003810004671B6 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		4701840720003B29004671B6 /* CalendarDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayCollectionViewCell.swift; sourceTree = "<group>"; };
 		4771B7141FFDC9FC00144A4B /* OutlookCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutlookCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4771B7171FFDC9FC00144A4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4771B7191FFDC9FC00144A4B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4771B71C1FFDC9FC00144A4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4771B71E1FFDC9FC00144A4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4771B7211FFDC9FC00144A4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4771B7231FFDC9FC00144A4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -78,11 +78,11 @@
 			isa = PBXGroup;
 			children = (
 				4771B7171FFDC9FC00144A4B /* AppDelegate.swift */,
-				4771B7191FFDC9FC00144A4B /* ViewController.swift */,
-				4771B71B1FFDC9FC00144A4B /* Main.storyboard */,
+				4701840520003810004671B6 /* CalendarViewController.swift */,
 				4771B71E1FFDC9FC00144A4B /* Assets.xcassets */,
 				4771B7201FFDC9FC00144A4B /* LaunchScreen.storyboard */,
 				4771B7231FFDC9FC00144A4B /* Info.plist */,
+				4701840720003B29004671B6 /* CalendarDayCollectionViewCell.swift */,
 			);
 			path = OutlookCalendar;
 			sourceTree = "<group>";
@@ -181,7 +181,6 @@
 			files = (
 				4771B7221FFDC9FC00144A4B /* LaunchScreen.storyboard in Resources */,
 				4771B71F1FFDC9FC00144A4B /* Assets.xcassets in Resources */,
-				4771B71D1FFDC9FC00144A4B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,7 +198,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4771B71A1FFDC9FC00144A4B /* ViewController.swift in Sources */,
+				4701840820003B29004671B6 /* CalendarDayCollectionViewCell.swift in Sources */,
+				4701840620003810004671B6 /* CalendarViewController.swift in Sources */,
 				4771B7181FFDC9FC00144A4B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -223,14 +223,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		4771B71B1FFDC9FC00144A4B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4771B71C1FFDC9FC00144A4B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4771B7201FFDC9FC00144A4B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
