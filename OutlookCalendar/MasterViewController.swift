@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol calendarObserver {
+    func dateWasChosen(date:Date)
+}
+
 class MasterViewController: UIViewController {
 
     private lazy var calendarViewController : CalendarViewController = {
@@ -35,6 +39,9 @@ class MasterViewController: UIViewController {
         
         addContentController(calendarViewController)
         addContentController(agendaViewController)
+        
+        agendaViewController.observer = calendarViewController
+        calendarViewController.observer = agendaViewController
     }
 
     private func addContentController(_ child: UIViewController) {

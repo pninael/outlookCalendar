@@ -8,10 +8,12 @@
 
 import UIKit
 
-class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, calendarObserver {
 
     let rangedCalendar = RangedCalendar(yearsBack: 8, yearsAhead: 2)
-
+    var observer : calendarObserver?
+    var topVisibleCellIndexPath : IndexPath?
+    
     private lazy var tableView: UITableView! = {
         let tableView = UITableView(frame: view.frame)
         tableView.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
@@ -70,6 +72,20 @@ class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func chooseDate(date:Date, animated: Bool) {
         if let day = rangedCalendar.dayNumberInRange(forDate: date) {
             tableView.scrollToSection(section: day, animated: animated)
+            topVisibleCellIndexPath = tableView.indexPathsForVisibleRows?[0]
+        }
+    }
+    
+    func dateWasChosen(date: Date) {
+        chooseDate(date: date, animated: true)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if topVisibleCellIndexPath != tableView.indexPathsForVisibleRows?[0] {
+            if let topVisibleCellIndexPath = tableView.indexPathsForVisibleRows?[0],
+            let date = rangedCalendar.dateFromStartDateByAddingDays(days: topVisibleCellIndexPath.section) {
+                observer?.dateWasChosen(date: date)
+            }
         }
     }
 }

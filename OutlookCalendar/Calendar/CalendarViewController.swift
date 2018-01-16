@@ -8,8 +8,10 @@
 
 import UIKit
 
-class CalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class CalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, calendarObserver {
     
+    var observer : calendarObserver?
+
     let numberOfDaysInWeek = 7
     
     let rangedCalendar = RangedCalendar(yearsBack: 8, yearsAhead: 2)
@@ -33,7 +35,6 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
 
         for weekDay in 0..<numberOfDaysInWeek {
             let view = WeekDayView()
-            view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             view.title.text = dateFormatter.shortWeekdaySymbols[weekDay]
             stackView.addArrangedSubview(view)
         }
@@ -114,5 +115,15 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
                                           y: weekDaysStackView.frame.maxY,
                                           width: view.frame.width,
                                           height: view.frame.height - 50)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let date = rangedCalendar.dateFromStartDateByAddingMonths(months: indexPath.section, andDays: indexPath.row) {
+            observer?.dateWasChosen(date: date)
+        }
+    }
+    
+    func dateWasChosen(date: Date) {
+        chooseDate(date: date, animated: true)
     }
 }
