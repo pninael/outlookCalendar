@@ -30,19 +30,15 @@ class RangedCalendar {
     }
     
     func dateFromStartDateByAddingDays(days: Int) -> Date? {
-        return calendar.date(byAdding: .day, value: days, to: interval.start)
+        guard let startDate = startDate() else { return nil }
+        return calendar.date(byAdding: .day, value: days, to: startDate)
     }
     
     func dateFromStartDateByAddingMonths(months: Int, andDays days: Int) -> Date? {
         
-        // set start date to be the first date in the interval, with same time as now
-        let now = Date()
-        var components = calendar.dateComponents([.hour, .minute, .second], from: now)
-        components.year = calendar.component(.year, from: interval.start)
-        components.month = calendar.component(.month, from: interval.start)
-        
-        guard let startDate = calendar.date(from: components) else { return nil }
-        guard let dateByAddingMonths = calendar.date(byAdding: .month, value: months, to: startDate) else {return nil }
+        guard let startDate = startDate(),
+            let dateByAddingMonths = calendar.date(byAdding: .month, value: months, to: startDate)
+            else {return nil }
         return calendar.date(byAdding: .day, value: days, to: dateByAddingMonths)
     }
     
@@ -76,6 +72,16 @@ class RangedCalendar {
             else { return DateInterval() }
         
         return DateInterval(start: startDate, end: endDate)
+    }
+    
+    private func startDate() -> Date? {
+        // set start date to be the first date in the interval, with same time as now
+        let now = Date()
+        var components = calendar.dateComponents([.hour, .minute, .second], from: now)
+        components.year = calendar.component(.year, from: interval.start)
+        components.month = calendar.component(.month, from: interval.start)
+        
+        return calendar.date(from: components)
     }
 }
 

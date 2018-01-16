@@ -53,13 +53,13 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        chooseToday(animated: false)
+        let today = Date()
+        chooseDate(date:today, animated: false)
     }
 
-    func chooseToday(animated: Bool) {
-        let today = Date()
-        let day = rangedCalendar.calendar.component(.day, from: today)
-        if let month = rangedCalendar.monthNumberInRange(forDate: today) {
+    func chooseDate(date:Date, animated: Bool) {
+        let day = rangedCalendar.calendar.component(.day, from: date)
+        if let month = rangedCalendar.monthNumberInRange(forDate: date) {
             let indexPath = IndexPath(item: day-1, section: month)
             daysCollectionView.selectItem(at: indexPath, animated: animated, scrollPosition: .top)
         }
