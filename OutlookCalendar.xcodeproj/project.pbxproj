@@ -8,7 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		4701840620003810004671B6 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4701840520003810004671B6 /* CalendarViewController.swift */; };
-		4701840820003B29004671B6 /* CalendarDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4701840720003B29004671B6 /* CalendarDayCollectionViewCell.swift */; };
+		4701840820003B29004671B6 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4701840720003B29004671B6 /* DayCell.swift */; };
+		4701840A20043F67004671B6 /* RangedCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4701840920043F67004671B6 /* RangedCalendar.swift */; };
+		4726CBAD200BF5180069E528 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4726CBAC200BF5180069E528 /* MasterViewController.swift */; };
+		4726CBAF200C06600069E528 /* AgendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4726CBAE200C06600069E528 /* AgendaViewController.swift */; };
+		4726CBB1200DC8240069E528 /* WeekDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4726CBB0200DC8240069E528 /* WeekDayView.swift */; };
 		4771B7181FFDC9FC00144A4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4771B7171FFDC9FC00144A4B /* AppDelegate.swift */; };
 		4771B71F1FFDC9FC00144A4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4771B71E1FFDC9FC00144A4B /* Assets.xcassets */; };
 		4771B7221FFDC9FC00144A4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4771B7201FFDC9FC00144A4B /* LaunchScreen.storyboard */; };
@@ -27,7 +31,11 @@
 
 /* Begin PBXFileReference section */
 		4701840520003810004671B6 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
-		4701840720003B29004671B6 /* CalendarDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayCollectionViewCell.swift; sourceTree = "<group>"; };
+		4701840720003B29004671B6 /* DayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
+		4701840920043F67004671B6 /* RangedCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangedCalendar.swift; sourceTree = "<group>"; };
+		4726CBAC200BF5180069E528 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		4726CBAE200C06600069E528 /* AgendaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaViewController.swift; sourceTree = "<group>"; };
+		4726CBB0200DC8240069E528 /* WeekDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayView.swift; sourceTree = "<group>"; };
 		4771B7141FFDC9FC00144A4B /* OutlookCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutlookCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4771B7171FFDC9FC00144A4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4771B71E1FFDC9FC00144A4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,6 +64,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4726CBAA200BF4BD0069E528 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				4726CBB2200DD6780069E528 /* views */,
+				4701840920043F67004671B6 /* RangedCalendar.swift */,
+				4701840520003810004671B6 /* CalendarViewController.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		4726CBAB200BF4D70069E528 /* Agenda */ = {
+			isa = PBXGroup;
+			children = (
+				4726CBAE200C06600069E528 /* AgendaViewController.swift */,
+			);
+			path = Agenda;
+			sourceTree = "<group>";
+		};
+		4726CBB2200DD6780069E528 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				4701840720003B29004671B6 /* DayCell.swift */,
+				4726CBB0200DC8240069E528 /* WeekDayView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
 		4771B70B1FFDC9FC00144A4B = {
 			isa = PBXGroup;
 			children = (
@@ -77,12 +112,13 @@
 		4771B7161FFDC9FC00144A4B /* OutlookCalendar */ = {
 			isa = PBXGroup;
 			children = (
+				4726CBAC200BF5180069E528 /* MasterViewController.swift */,
 				4771B7171FFDC9FC00144A4B /* AppDelegate.swift */,
-				4701840520003810004671B6 /* CalendarViewController.swift */,
+				4726CBAB200BF4D70069E528 /* Agenda */,
+				4726CBAA200BF4BD0069E528 /* Calendar */,
 				4771B71E1FFDC9FC00144A4B /* Assets.xcassets */,
 				4771B7201FFDC9FC00144A4B /* LaunchScreen.storyboard */,
 				4771B7231FFDC9FC00144A4B /* Info.plist */,
-				4701840720003B29004671B6 /* CalendarDayCollectionViewCell.swift */,
 			);
 			path = OutlookCalendar;
 			sourceTree = "<group>";
@@ -198,9 +234,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4701840820003B29004671B6 /* CalendarDayCollectionViewCell.swift in Sources */,
+				4726CBAD200BF5180069E528 /* MasterViewController.swift in Sources */,
+				4701840820003B29004671B6 /* DayCell.swift in Sources */,
+				4726CBAF200C06600069E528 /* AgendaViewController.swift in Sources */,
+				4701840A20043F67004671B6 /* RangedCalendar.swift in Sources */,
 				4701840620003810004671B6 /* CalendarViewController.swift in Sources */,
 				4771B7181FFDC9FC00144A4B /* AppDelegate.swift in Sources */,
+				4726CBB1200DC8240069E528 /* WeekDayView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
