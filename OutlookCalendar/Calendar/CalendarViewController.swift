@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, calendarObserver {
+class CalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, calendarObserver {
     
     var observer : calendarObserver?
 
@@ -18,7 +18,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     private lazy var daysCollectionView: UICollectionView! = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        collectionView.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
+        collectionView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(DayCell.self, forCellWithReuseIdentifier: DayCell.reuseIdentifier)
@@ -93,10 +93,6 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         return cell
     }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 50, height: 50)
-    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -125,5 +121,25 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func dateWasChosen(date: Date) {
         chooseDate(date: date, animated: true)
+    }
+}
+
+extension CalendarViewController : UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let width = Int(collectionView.frame.width/CGFloat(numberOfDaysInWeek))
+        return CGSize(width: width, height: width)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 1.0, left: 0, bottom: 0, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }
