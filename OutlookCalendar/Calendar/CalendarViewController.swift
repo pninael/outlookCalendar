@@ -14,7 +14,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     let numberOfDaysInWeek = 7
     
-    let rangedCalendar = RangedCalendar(yearsBack: 8, yearsAhead: 2)
+    let rangedCalendar = RangedCalendar.shared
     
     private lazy var daysCollectionView: UICollectionView! = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())

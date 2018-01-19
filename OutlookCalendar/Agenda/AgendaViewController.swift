@@ -10,7 +10,7 @@ import UIKit
 
 class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, calendarObserver {
 
-    let rangedCalendar = RangedCalendar(yearsBack: 8, yearsAhead: 2)
+    let rangedCalendar = RangedCalendar.shared
     var observer : calendarObserver?
     var topVisibleCellIndexPath : IndexPath?
     

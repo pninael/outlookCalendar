@@ -9,10 +9,13 @@
 import Foundation
 
 class RangedCalendar {
+   
+    var yearsBack = 8
+    var yearsAhead = 2
+    
+    static let shared = RangedCalendar()
     
     var calendar = Calendar.current
-    var yearsBack : Int
-    var yearsAhead : Int
     
     private lazy var interval = dateIntervalFromToday(yearsBack: yearsBack, yearsAhead: yearsAhead)
     
@@ -23,11 +26,6 @@ class RangedCalendar {
     lazy var numberOfDaysInRange : Int = {
         return calendar.numberOf(component: .day, inInterval: interval)
     }()
-    
-    init(yearsBack: Int, yearsAhead: Int) {
-        self.yearsAhead = yearsAhead
-        self.yearsBack = yearsBack
-    }
     
     func dateFromStartDateByAddingDays(days: Int) -> Date? {
         guard let startDate = startDate() else { return nil }
