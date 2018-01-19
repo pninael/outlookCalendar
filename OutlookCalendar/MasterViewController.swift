@@ -14,6 +14,8 @@ protocol calendarObserver {
 
 class MasterViewController: UIViewController {
 
+    private var eventsService = EventsServiceMock()
+    
     private lazy var calendarViewController : CalendarViewController = {
         let calendarVC = CalendarViewController()
         calendarVC.view.frame = CGRect(x: 0,
@@ -42,6 +44,10 @@ class MasterViewController: UIViewController {
         
         agendaViewController.observer = calendarViewController
         calendarViewController.observer = agendaViewController
+        
+        if let events = eventsService.fetchEvents() {
+            print(events)
+        }
     }
 
     private func addContentController(_ child: UIViewController) {

@@ -1,0 +1,277 @@
+{
+    "events": [
+               {
+               "Id": 1,
+               "Subject": "Martin Luther King Day",
+               "Category": "Holiday",
+               "Preview": "",
+               "Start": "2018-01-15T00:00:00-08:00",
+               "End": "2018-01-16T00:00:00-08:00",
+               "IsAllDayEvent": true,
+               "Organizer": {
+               "Name": "Pnina Eliyahu",
+               "EmailAddress": "pninae@microsoft.com"
+               },
+               "Location": "United States",
+               "IsOrganizer": true
+               },
+               {
+               "Id": 2,
+               "Subject": "iOS weekly planning",
+               "Category": "Work",
+               "Preview": "Remaking the invite. It’s a given, but worth repeating: I will continue to come to these when I can.",
+               "Start": "2018-01-15T10:30:00-08:00",
+               "End": "2018-01-15T11:30:00-08:00",
+               "IsAllDayEvent": false,
+               "Organizer": {
+               "Name": "Jay Laney",
+               "EmailAddress": "jayl@microsoft.com"
+               },
+               "Location": "Conf Room SANFRAN-1355MKT\/4E02 (24) St. Helena Skype Meeting Room",
+               "IsOrganizer": false
+               },
+               {
+               "Id": 3,
+               "Subject": "כדורסל! ",
+               "Category": "Personal",
+               "Preview": "",
+               "Start": "2018-01-15T21:00:00-08:00",
+               "End": "2018-01-15T22:00:00-08:00",
+               "IsAllDayEvent": false,
+               "Organizer": {
+               "Name": "Pnina Eliyahu",
+               "EmailAddress": "pninae@microsoft.com"
+               },
+               "Location": "",
+               "IsOrganizer": true
+               },
+               {
+               "Id": 4,
+               "Subject": "iOS Architectures + Video",
+               "Category": "Work",
+               "Preview": "You're receiving this message because you're a member of the Yammer iOS Team<https:\/\/outlook.office365.com\/owa\/yammeriosteam@service.microsoft.com\/groupsubscription.ashx?realm=service.microsoft.com&source=EscalatedMessage&action=conversations> group. ",
+               "Start": "2018-01-16T11:00:00-08:00",
+               "End": "2018-01-16T13:00:00-08:00",
+               "IsAllDayEvent": false,
+               "Organizer": {
+               "Name": "Francesco Frison",
+               "EmailAddress": "francescof@microsoft.com"
+               },
+               "Location": "Conf Room SANFRAN-1355MKT\/3C16 (16) Ocean Beach AV",
+               "IsOrganizer": false
+               },
+               {
+               "Id": 5,
+               "Subject": "OLS daily standup",
+               "Category": "Work",
+               "Preview": "  1.  Are there any risks to deliverables for the current milestone?\u000d\u000a\u000d\u000a  2.  What are you working on today?\u000d\u000a\u000d\u000a  3.  Any immediate or upcoming blockers?\u000d\u000a\u000d\u000a\u000d\u000a\u000d\u000a\u000d\u000a\u000d\u000a  If you can’t attend, and no one is speaking on behalf of your project, please send your ",
+               "Start": "2018-01-16T11:00:00-08:00",
+               "End": "2018-01-16T11:20:00-08:00",
+               "IsAllDayEvent": false,
+               "Organizer": {
+               "Name": "Omer Gelbard (GILBERT)",
+               "EmailAddress": "omerg@microsoft.com"
+               },
+               "Location": "Big board area",
+               "IsOrganizer": false
+               },
+               {
+               "Id": 6,
+               "Subject": "GraphQL Weekly",
+               "Category": "Work",
+               "Preview": "2018!!\u000d\u000a\u000d\u000aWeekly updates on our GraphQL progress.\u000d\u000a\u000d\u000a\u000d\u000a\u000d\u000a.........................................................................................................................................\u000d\u000a\u000d\u000aJoin online meeting <https:\/\/meet.lync.com\/microsoft\/miju",
+               "Start": "2018-01-16T13:00:00-08:00",
+               "End": "2018-01-16T13:30:00-08:00",
+               "IsAllDayEvent": false,
+               "Organizer": {
+               "Name": "Miguel Juárez",
+               "EmailAddress": "miguelj@microsoft.com"
+               },
+               "Location": "Conf Room SANFRAN-1355MKT\/3C06 (10) Carmel Bay AV",
+               "IsOrganizer": false
+               },
+               {
+               "Id": 7,
+               "Subject": "GraphQL Schema Design",
+               "Category": "Work",
+               "Preview": ".........................................................................................................................................\u000d\u000a\u000d\u000aJoin online meeting <https:\/\/meet.lync.com\/microsoft\/mijuarez\/4H7IWDTC>\u000d\u000a\u000d\u000aTrouble Joining? Try Sk",
+               "Start": "2018-01-16T13:30:00-08:00",
+               "End": "2018-01-16T14:30:00-08:00",
+               "IsAllDayEvent": false,
+               "Organizer": {
+               "Name": "Miguel Juárez",
+               "EmailAddress": "miguelj@microsoft.com",
+               
+               },
+               "Location": "Conf Room SANFRAN-1355MKT\/3C06 (10) Carmel Bay AV",
+               "IsOrganizer": false
+               },
+               {
+               "Id": 8,
+               "Subject": "YammerTime",
+               "Category": "Work",
+               "Preview": "STOP! YammerTime… Yammer’s monthly all-hands. Come hear the latest and greatest every 2nd Tuesday of the month at 2pm PST. Link to streaming at aka.ms\/yammerstream<http:\/\/aka.ms\/yammerstream>. BUT FIRST! You’ll need to follow the instructions to register ",
+               "Start": "2018-01-17T10:00:00-08:00",
+               "End": "2018-01-17T11:00:00-08:00",
+               "IsAllDayEvent": false,
+               "Organizer": {
+               "Name": "Jessica Ricasata",
+               "EmailAddress": "jessicar@microsoft.com"
+               },
+               "Location": "SF: The Commons \/ Redmond: 31\/1007-1008 \/ Skype Meeting",
+               "IsOrganizer": false
+               },
+               {
+               "Id": 9,
+               "Subject": "OLS daily standup",
+               "Category": "Work",
+               "Preview": "  1.  Are there any risks to deliverables for the current milestone?\u000d\u000a\u000d\u000a  2.  What are you working on today?\u000d\u000a\u000d\u000a  3.  Any immediate or upcoming blockers?\u000d\u000a\u000d\u000a\u000d\u000a\u000d\u000a\u000d\u000a\u000d\u000a  If you can’t attend, and no one is speaking on behalf of your project, please send your ",
+               "Start": "2018-01-17T11:00:00-08:00",
+               "End": "2018-01-17T11:20:00-08:00",
+               "IsAllDayEvent": false,
+               "Organizer": {
+               "Name": "Omer Gelbard (GILBERT)",
+               "EmailAddress": "omerg@microsoft.com"
+               },
+               "Location": "Big board area",
+               "IsOrganizer": false
+               },
+               {
+               "Id": 10,
+               "Subject": "Team meeting ",
+               "Category": "Work",
+               "Preview": "No specific agenda, just meeting and we can build agenda at runtime.\u000d\u000a\u000d\u000aYou're receiving this message because you're a member of the Chandra Garre's Direct Reports<https:\/\/outlook.office365.com\/owa\/cgarre-dr@service.microsoft.com\/groupsubscription.ashx?re",
+               "Start": "2018-01-17T11:30:00-08:00",
+               "End": "2018-01-17T12:30:00-08:00",
+               "IsAllDayEvent": false,
+               "Organizer": {
+               "Name": "Chandra Garre",
+               "EmailAddress": "chandrag@microsoft.com"
+               },
+               "Location": "Conf Room SANFRAN-1355MKT\/3A26 (10) Red Rock AV",
+               "IsOrganizer": false
+               },
+               {
+               "Id": 11,
+               "Subject": "meeting",
+               "Category": "Personal",
+               "Preview": "",
+               "Start": "2018-01-17T13:00:00-08:00",
+               "End": "2018-01-17T13:45:00-08:00",
+               "IsAllDayEvent": false,
+               "Organizer": {
+               "Name": "Pnina Eliyahu",
+               "EmailAddress": "pninae@microsoft.com",
+               
+               },
+               "Location": "Chimney Rock - 4th Floor ()",
+               "IsOrganizer": true
+               },
+               {
+               "Id": 13,
+               "Subject": "Pnina and Chandra 1:1",
+               "Category": "Work",
+               "Preview": "",
+               "Start": "2018-01-17T15:00:00-08:00",
+               "End": "2018-01-17T15:30:00-08:00",
+               "IsAllDayEvent": false,
+               "Organizer": {
+               "Name": "Chandra Garre",
+               "EmailAddress": "chandrag@microsoft.com"
+               },
+               "Location": "",
+               "IsOrganizer": false,
+               
+               },
+               {
+               "Id": 14,
+               "Subject": "IOS TEAM",
+               "Category": "Work",
+               "Preview": "",
+               "Start": "2018-01-17T15:00:00-08:00",
+               "End": "2018-01-17T15:30:00-08:00",
+               "IsAllDayEvent": false,
+               "Organizer": {
+               "Name": "Jay Laney",
+               "EmailAddress": "jayl@microsoft.com"
+               },
+               "Location": "Conf Room SANFRAN-1355MKT\/3A21 (18) Bay Bridge Skype Meeting Room",
+               "IsOrganizer": false
+               },
+               {
+               "Id": 15,
+               "Subject": "OLS daily standup",
+               "Category": "Work",
+               "Preview": "  1.  Are there any risks to deliverables for the current milestone?\u000d\u000a\u000d\u000a  2.  What are you working on today?\u000d\u000a\u000d\u000a  3.  Any immediate or upcoming blockers?\u000d\u000a\u000d\u000a\u000d\u000a\u000d\u000a\u000d\u000a\u000d\u000a  If you can’t attend, and no one is speaking on behalf of your project, please send your ",
+               "Start": "2018-01-18T11:00:00-08:00",
+               "End": "2018-01-18T11:20:00-08:00",
+               "IsAllDayEvent": false,
+               "Organizer": {
+               "Name": "Omer Gelbard (GILBERT)",
+               "EmailAddress": "omerg@microsoft.com"
+               },
+               "Location": "Big board area",
+               "IsOrganizer": false
+               },
+               {
+               "Id": 16,
+               "Subject": "FW: In_inbox & estimates discussion",
+               "Category": "Work",
+               "Preview": "From: rsoni@yammer-inc.com\u000d\u000aWhen: 2:00 PM - 3:00 PM January 18, 2018\u000d\u000aSubject: In_inbox & estimates discussion\u000d\u000aLocation: Online meeting; Conf Room SANFRAN-1355MKT\/3C08 (10) Santa Cruz AV\u000d\u000a\u000d\u000a\u000d\u000aMoving this to tomorrow due to conflicts with meetings rel",
+               "Start": "2018-01-18T14:00:00-08:00",
+               "End": "2018-01-18T15:00:00-08:00",
+               "IsAllDayEvent": false,
+               "Organizer": {
+               "Name": "Rohan Soni",
+               "EmailAddress": "rohans@microsoft.com"
+               },
+               "Location": "Online meeting; Conf Room SANFRAN-1355MKT\/3C08 (10) Santa Cruz AV",
+               "IsOrganizer": false
+               },
+               {
+               "Id": 17,
+               "Subject": "Teams, Yammer & GraphQL",
+               "Category": "Work",
+               "Preview": "Teams is interested GraphQL and is interested in what Yammer has done so far for client and services.\u000d\u000a\u000d\u000a\u000d\u000aYammer links\u000d\u000a\u000d\u000a   *   https:\/\/github.int.yammer.com\/yammer\/graph\u000d\u000a\u000d\u000a   *   https:\/\/github.int.yammer.com\/pages\/yammer\/graph\/\u000d\u000a\u000d\u000a   *   https:\/\/www.",
+               "Start": "2018-01-18T15:00:00-08:00",
+               "End": "2018-01-18T16:00:00-08:00",
+               "IsAllDayEvent": false,
+               "Organizer": {
+               "Name": "Josh Carrier",
+               "EmailAddress": "joshc@microsoft.com"
+               },
+               "Location": "Online meeting; Conf Room 32\/26 (8)",
+               "IsOrganizer": false
+               },
+               {
+               "Id": 18,
+               "Subject": "OLS daily standup",
+               "Category": "Work",
+               "Preview": "  1.  Are there any risks to deliverables for the current milestone?\u000d\u000a\u000d\u000a  2.  What are you working on today?\u000d\u000a\u000d\u000a  3.  Any immediate or upcoming blockers?\u000d\u000a\u000d\u000a\u000d\u000a\u000d\u000a\u000d\u000a\u000d\u000a  If you can’t attend, and no one is speaking on behalf of your project, please send your ",
+               "Start": "2018-01-19T11:00:00-08:00",
+               "End": "2018-01-19T11:20:00-08:00",
+               "IsAllDayEvent": false,
+               "Organizer": {
+               "Name": "Omer Gelbard (GILBERT)",
+               "EmailAddress": "omerg@microsoft.com"
+               },
+               "Location": "Big board area",
+               "IsOrganizer": false
+               },
+               {
+               "Id": 19,
+               "Subject": "Omer OOF on vacation",
+               "Category": "Work",
+               "Preview": "",
+               "Start": "2018-01-15T00:00:00-08:00",
+               "End": "2018-01-19T00:00:00-08:00",
+               "IsAllDayEvent": true,
+               "Organizer": {
+               "Name": "Omer Gelbard (GILBERT)",
+               "EmailAddress": "omerg@microsoft.com"
+               },
+               "Location": "",
+               "IsOrganizer": true
+               }
+            ]
+}
