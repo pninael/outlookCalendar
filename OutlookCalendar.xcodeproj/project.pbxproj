@@ -18,6 +18,11 @@
 		4771B71F1FFDC9FC00144A4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4771B71E1FFDC9FC00144A4B /* Assets.xcassets */; };
 		4771B7221FFDC9FC00144A4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4771B7201FFDC9FC00144A4B /* LaunchScreen.storyboard */; };
 		4771B72D1FFDC9FC00144A4B /* OutlookCalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4771B72C1FFDC9FC00144A4B /* OutlookCalendarTests.swift */; };
+		47799AB020101AB800CF625C /* EventsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47799AAF20101AB800CF625C /* EventsService.swift */; };
+		47799AB320101B4800CF625C /* events.json in Resources */ = {isa = PBXBuildFile; fileRef = 47799AB220101B4800CF625C /* events.json */; };
+		47799AB520101BC500CF625C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47799AB420101BC500CF625C /* Event.swift */; };
+		47799AB720101BDA00CF625C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47799AB620101BDA00CF625C /* User.swift */; };
+		47799AB920101D9300CF625C /* Attendee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47799AB820101D9300CF625C /* Attendee.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +51,11 @@
 		4771B7281FFDC9FC00144A4B /* OutlookCalendarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OutlookCalendarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4771B72C1FFDC9FC00144A4B /* OutlookCalendarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlookCalendarTests.swift; sourceTree = "<group>"; };
 		4771B72E1FFDC9FC00144A4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		47799AAF20101AB800CF625C /* EventsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsService.swift; sourceTree = "<group>"; };
+		47799AB220101B4800CF625C /* events.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = events.json; sourceTree = "<group>"; };
+		47799AB420101BC500CF625C /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		47799AB620101BDA00CF625C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		47799AB820101D9300CF625C /* Attendee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attendee.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,12 +134,13 @@
 			children = (
 				4726CBAC200BF5180069E528 /* MasterViewController.swift */,
 				4771B7171FFDC9FC00144A4B /* AppDelegate.swift */,
-				4701840920043F67004671B6 /* RangedCalendar.swift */,
+				47799AAE20101A5800CF625C /* Model */,
 				4726CBAB200BF4D70069E528 /* Agenda */,
 				4726CBAA200BF4BD0069E528 /* Calendar */,
 				4771B71E1FFDC9FC00144A4B /* Assets.xcassets */,
 				4771B7201FFDC9FC00144A4B /* LaunchScreen.storyboard */,
 				4771B7231FFDC9FC00144A4B /* Info.plist */,
+				47799AB220101B4800CF625C /* events.json */,
 			);
 			path = OutlookCalendar;
 			sourceTree = "<group>";
@@ -141,6 +152,18 @@
 				4771B72E1FFDC9FC00144A4B /* Info.plist */,
 			);
 			path = OutlookCalendarTests;
+			sourceTree = "<group>";
+		};
+		47799AAE20101A5800CF625C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4701840920043F67004671B6 /* RangedCalendar.swift */,
+				47799AAF20101AB800CF625C /* EventsService.swift */,
+				47799AB420101BC500CF625C /* Event.swift */,
+				47799AB620101BDA00CF625C /* User.swift */,
+				47799AB820101D9300CF625C /* Attendee.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +251,7 @@
 			files = (
 				4771B7221FFDC9FC00144A4B /* LaunchScreen.storyboard in Resources */,
 				4771B71F1FFDC9FC00144A4B /* Assets.xcassets in Resources */,
+				47799AB320101B4800CF625C /* events.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,11 +272,15 @@
 				4726CBAD200BF5180069E528 /* MasterViewController.swift in Sources */,
 				4701840820003B29004671B6 /* DayCell.swift in Sources */,
 				4726CBAF200C06600069E528 /* AgendaViewController.swift in Sources */,
+				47799AB920101D9300CF625C /* Attendee.swift in Sources */,
 				4701840A20043F67004671B6 /* RangedCalendar.swift in Sources */,
+				47799AB520101BC500CF625C /* Event.swift in Sources */,
 				4726CBB5200DDA720069E528 /* EventCell.swift in Sources */,
 				4701840620003810004671B6 /* CalendarViewController.swift in Sources */,
+				47799AB020101AB800CF625C /* EventsService.swift in Sources */,
 				4771B7181FFDC9FC00144A4B /* AppDelegate.swift in Sources */,
 				4726CBB1200DC8240069E528 /* WeekDayView.swift in Sources */,
+				47799AB720101BDA00CF625C /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
