@@ -44,10 +44,6 @@ class MasterViewController: UIViewController {
         
         agendaViewController.observer = calendarViewController
         calendarViewController.observer = agendaViewController
-        
-        if let events = eventsService.fetchEvents() {
-            print(events)
-        }
     }
 
     private func addContentController(_ child: UIViewController) {

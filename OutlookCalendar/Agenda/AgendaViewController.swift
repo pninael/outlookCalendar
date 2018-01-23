@@ -12,11 +12,13 @@ class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     let rangedCalendar = RangedCalendar.shared
     var observer : calendarObserver?
-    var topVisibleCellIndexPath : IndexPath?
+    private var topVisibleCellIndexPath : IndexPath?
+    private var eventsMap = [Int:[Event]]()
+    private let eventsService = EventsServiceMock()
     
     private lazy var tableView: UITableView! = {
         let tableView = UITableView(frame: view.frame)
-        tableView.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
+        tableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(EventCell.self, forCellReuseIdentifier: EventCell.reuseIdentifier)
@@ -26,6 +28,9 @@ class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchEvents()
+        
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         view.addSubview(tableView)
     }
@@ -41,7 +46,7 @@ class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return eventsMap[section]?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -61,8 +66,13 @@ class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCell(withIdentifier: EventCell.reuseIdentifier, for: indexPath)
         
         if let eventCell = cell as? EventCell {
-            if let date = rangedCalendar.dateFromStartDateByAddingDays(days: indexPath.section) {
-                eventCell.title.text = "\(rangedCalendar.calendar.component(.day, from: date))/\(rangedCalendar.calendar.component(.month, from: date))/\(rangedCalendar.calendar.component(.year, from: date) - 2000)"
+            if let eventsForDate = eventsMap[indexPath.section] {
+                assert(eventsForDate.count > indexPath.row, "TODO")
+                let event = eventsForDate[indexPath.row]
+                eventCell.subjectLabel.text = event.subject
+            }
+            else {
+                eventCell.subjectLabel.text = "No events"
             }
         }
         
@@ -85,6 +95,25 @@ class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if let topVisibleCellIndexPath = tableView.indexPathsForVisibleRows?[0],
             let date = rangedCalendar.dateFromStartDateByAddingDays(days: topVisibleCellIndexPath.section) {
                 observer?.dateWasChosen(date: date)
+            }
+        }
+    }
+    
+    func fetchEvents() {
+        
+        guard let events = eventsService.loadEventsFromJson() else { return }
+        
+        events.forEach { event in
+            if let startDayNumberInRangedCalendar = rangedCalendar.dayNumberInRange(forDate: event.startTime),
+                let endDayNumberInRangedCalendar = rangedCalendar.dayNumberInRange(forDate: event.endTime){
+                for day in startDayNumberInRangedCalendar...endDayNumberInRangedCalendar {
+                    if eventsMap[day] != nil {
+                        eventsMap[day]?.append(event)
+                    }
+                    else {
+                        eventsMap[day] = [event]
+                    }
+                }
             }
         }
     }

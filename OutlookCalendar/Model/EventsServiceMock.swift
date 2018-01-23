@@ -12,28 +12,6 @@ class EventsServiceMock {
     
     let rangedCalendar = RangedCalendar.shared
     
-    var calendarEventsMap = [Int:[Event]]()
-    
-    func fetchEvents() -> [Int:[Event]]? {
-        
-        guard let events = loadEventsFromJson() else { return nil }
-        
-        events.forEach { event in
-            if let startDayNumberInRangedCalendar = rangedCalendar.dayNumberInRange(forDate: event.startTime),
-                let endDayNumberInRangedCalendar = rangedCalendar.dayNumberInRange(forDate: event.endTime){
-                for day in startDayNumberInRangedCalendar...endDayNumberInRangedCalendar {
-                    if calendarEventsMap[day] != nil {
-                        calendarEventsMap[day]?.append(event)
-                    }
-                    else {
-                        calendarEventsMap[day] = [event]
-                    }
-                }
-            }
-        }
-        return calendarEventsMap
-    }
-    
     func loadEventsFromJson() -> [Event]? {
         guard let path = Bundle.main.path(forResource: "events", ofType: "json") else {
             return nil
