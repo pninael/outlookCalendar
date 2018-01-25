@@ -82,6 +82,14 @@ struct Event {
 }
 
 extension Date {
+    
+    var monthSymbol : String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM"
+        let monthNumber = Calendar.current.component(.month, from: self)
+        return dateFormatter.monthSymbols[monthNumber - 1]
+    }
+    
     static func fromString(string: String, withFormat format: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format

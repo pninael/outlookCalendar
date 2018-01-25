@@ -72,6 +72,8 @@ extension MasterViewController : CalendarObserver {
     
     func dateWasChosen(sender: UIViewController, date: Date) {
         
+        title = date.monthSymbol
+        
         if sender == calendarViewController {
             agendaViewController.chooseDate(date: date, animated: true)
         }
