@@ -8,47 +8,85 @@
 
 import UIKit
 
-protocol calendarObserver {
-    func dateWasChosen(date:Date)
+protocol CalendarObserver {
+    func dateWasChosen(sender: UIViewController, date:Date)
+    func calendarWillStartScrolling(sender: UIViewController)
 }
 
 class MasterViewController: UIViewController {
 
-    private var eventsService = EventsServiceMock()
+    private let calendarExpandedPropotion : CGFloat = 0.5
+    private let calendarCollapsedPropotion : CGFloat = 0.3
     
-    private lazy var calendarViewController : CalendarViewController = {
-        let calendarVC = CalendarViewController()
-        calendarVC.view.frame = CGRect(x: 0,
-                                       y: 0,
-                                       width: view.bounds.size.width,
-                                       height: view.bounds.size.height * 0.5)
-        return calendarVC
-    }();
-    
-    private lazy var agendaViewController : AgendaViewController = {
-        let agendaVC = AgendaViewController()
-        agendaVC.view.frame = CGRect(x: 0,
-                                     y: calendarViewController.view.frame.maxY,
-                                     width: view.bounds.size.width,
-                                     height: view.bounds.size.height * 0.5)
-        return agendaVC
-    }();
+    private var calendarViewController = CalendarViewController()
+    private var agendaViewController = AgendaViewController()
         
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        title = "Calendar"
         
         addContentController(calendarViewController)
         addContentController(agendaViewController)
+        setCalendarProportion(proportion: calendarCollapsedPropotion, animated: false)
         
-        agendaViewController.observer = calendarViewController
-        calendarViewController.observer = agendaViewController
+        agendaViewController.observer = self
+        calendarViewController.observer = self
     }
 
     private func addContentController(_ child: UIViewController) {
         addChildViewController(child)
         view.addSubview(child.view)
         child.didMove(toParentViewController: self)
+    }
+    
+    private func setCalendarProportion(proportion: CGFloat, animated: Bool) {
+        let layoutViews : () -> Void = {
+            self.calendarViewController.view.frame = CGRect(x: 0,
+                                                       y: 0,
+                                                       width: self.view.bounds.size.width,
+                                                       height: self.view.bounds.size.height * proportion)
+            
+            self.agendaViewController.view.frame = CGRect(x: 0,
+                                                     y: self.calendarViewController.view.frame.maxY,
+                                                     width: self.view.bounds.size.width,
+                                                     height: self.view.bounds.size.height * (1 - proportion))
+        }
+        
+        if animated {
+            UIView.animate(withDuration: 0.1, animations: layoutViews)
+        }
+        else {
+            layoutViews()
+        }
+    }
+
+    private func expandCalendar(animated: Bool) {
+        setCalendarProportion(proportion: calendarExpandedPropotion, animated: animated)
+    }
+    
+    private func collapseCalendar(animated: Bool) {
+        setCalendarProportion(proportion: calendarCollapsedPropotion, animated: animated)
+    }
+}
+
+extension MasterViewController : CalendarObserver {
+    
+    func dateWasChosen(sender: UIViewController, date: Date) {
+        
+        if sender == calendarViewController {
+            agendaViewController.chooseDate(date: date, animated: true)
+        }
+        else if sender == agendaViewController {
+            calendarViewController.chooseDate(date: date, animated: true)
+        }
+    }
+    
+    func calendarWillStartScrolling(sender: UIViewController) {
+        
+        if sender == calendarViewController {
+            expandCalendar(animated: true)
+        }
+        else if sender == agendaViewController {
+            collapseCalendar(animated: true)
+        }
     }
 }

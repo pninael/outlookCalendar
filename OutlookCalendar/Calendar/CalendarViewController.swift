@@ -8,9 +8,9 @@
 
 import UIKit
 
-class CalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, calendarObserver {
+class CalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    var observer : calendarObserver?
+    var observer : CalendarObserver?
 
     let numberOfDaysInWeek = 7
     
@@ -115,12 +115,16 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let date = rangedCalendar.dateFromStartDateByAddingMonths(months: indexPath.section, andDays: indexPath.row) {
-            observer?.dateWasChosen(date: date)
+            observer?.dateWasChosen(sender: self, date: date)
         }
     }
     
     func dateWasChosen(date: Date) {
         chooseDate(date: date, animated: true)
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        observer?.calendarWillStartScrolling(sender: self)
     }
 }
 

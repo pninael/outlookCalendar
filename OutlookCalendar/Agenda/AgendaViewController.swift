@@ -8,10 +8,10 @@
 
 import UIKit
 
-class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, calendarObserver {
+class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     let rangedCalendar = RangedCalendar.shared
-    var observer : calendarObserver?
+    var observer : CalendarObserver?
     private var topVisibleCellIndexPath : IndexPath?
     private var eventsMap = [Int:[Event]]()
     private let eventsService = EventsServiceMock()
@@ -83,7 +83,6 @@ class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     eventCell.categoryView.backgroundColor = event.category?.color
                     
                     for attendee in event.attendees {
-                        print("adding attendee \(attendee.name) to \(event.subject)")
                         let attendeeImage = eventsService.image(for: attendee)
                         eventCell.attendeesView.addSubview(AttendeeView(image: attendeeImage))
                     }
@@ -111,9 +110,13 @@ class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if topVisibleCellIndexPath != tableView.indexPathsForVisibleRows?[0] {
             if let topVisibleCellIndexPath = tableView.indexPathsForVisibleRows?[0],
             let date = rangedCalendar.dateFromStartDateByAddingDays(days: topVisibleCellIndexPath.section) {
-                observer?.dateWasChosen(date: date)
+                observer?.dateWasChosen(sender: self, date: date)
             }
         }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        observer?.calendarWillStartScrolling(sender: self)
     }
     
     private func fetchEvents() {
