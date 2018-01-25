@@ -40,9 +40,10 @@ struct Event {
     
     private let dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
     private let timeFormat = "hh:mm"
+    private let allDayString = "ALL DAY"
     
     var timeDescription : String {
-        return startTime.toString(format: "hh:mm")
+        return isAllDayEvent ? allDayString : startTime.toString(format: "hh:mm")
     }
     
     var durationDescription : String {
