@@ -26,5 +26,6 @@ class AttendeeView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         imageView.frame = frame
+        layer.cornerRadius = frame.size.width/2
     }
 }

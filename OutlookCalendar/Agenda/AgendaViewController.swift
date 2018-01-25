@@ -85,7 +85,7 @@ class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     for attendee in event.attendees {
                         print("adding attendee \(attendee.name) to \(event.subject)")
                         let attendeeImage = eventsService.image(for: attendee)
-                        eventCell.attendeesView.addArrangedSubview(AttendeeView(image: attendeeImage))
+                        eventCell.attendeesView.addSubview(AttendeeView(image: attendeeImage))
                     }
                 }
             }
