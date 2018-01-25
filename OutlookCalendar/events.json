@@ -27,6 +27,24 @@
                "Name": "Jay Laney",
                "EmailAddress": "jayl@microsoft.com"
                },
+               "Attendees": [
+                             {
+                             "Name": "Pnina Eliyahu",
+                             "EmailAddress": "pninae@microsoft.com"
+                             },
+                             {
+                             "Name": "Patrick Zhang",
+                             "EmailAddress": "pzhang@microsoft.com"
+                             },
+                             {
+                             "Name": "Fawaz Tahir",
+                             "EmailAddress": "fawazt@microsoft.com"
+                             },
+                             {
+                             "Name": "Ash Cortez",
+                             "EmailAddress": "ashc@microsoft.com"
+                             }
+                             ],
                "Location": "Conf Room SANFRAN-1355MKT\/4E02 (24) St. Helena Skype Meeting Room",
                "IsOrganizer": false
                },
@@ -42,6 +60,12 @@
                "Name": "Pnina Eliyahu",
                "EmailAddress": "pninae@microsoft.com"
                },
+               "Attendees": [
+                             {
+                             "Name": "Hezi Eliyahu",
+                             "EmailAddress": "hezi.eliyahu@gmail.com"
+                             }
+                             ],
                "Location": "",
                "IsOrganizer": true
                },
@@ -57,6 +81,24 @@
                "Name": "Francesco Frison",
                "EmailAddress": "francescof@microsoft.com"
                },
+               "Attendees": [
+                             {
+                             "Name": "Pnina Eliyahu",
+                             "EmailAddress": "pninae@microsoft.com"
+                             },
+                             {
+                             "Name": "Omer Gelbart",
+                             "EmailAddress": "omerg@microsoft.com"
+                             },
+                             {
+                             "Name": "Josh Carrier",
+                             "EmailAddress": "joshc@microsoft.com"
+                             },
+                             {
+                             "Name": "Jay Laney",
+                             "EmailAddress": "jayl@microsoft.com"
+                             }
+                             ],
                "Location": "Conf Room SANFRAN-1355MKT\/3C16 (16) Ocean Beach AV",
                "IsOrganizer": false
                },
@@ -72,6 +114,24 @@
                "Name": "Omer Gelbard (GILBERT)",
                "EmailAddress": "omerg@microsoft.com"
                },
+               "Attendees": [
+                             {
+                             "Name": "Pnina Eliyahu",
+                             "EmailAddress": "pninae@microsoft.com"
+                             },
+                             {
+                             "Name": "Omer Gelbart",
+                             "EmailAddress": "omerg@microsoft.com"
+                             },
+                             {
+                             "Name": "Josh Carrier",
+                             "EmailAddress": "joshc@microsoft.com"
+                             },
+                             {
+                             "Name": "Jay Laney",
+                             "EmailAddress": "jayl@microsoft.com"
+                             }
+                             ],
                "Location": "Big board area",
                "IsOrganizer": false
                },
@@ -87,6 +147,16 @@
                "Name": "Miguel Juárez",
                "EmailAddress": "miguelj@microsoft.com"
                },
+               "Attendees": [
+                             {
+                             "Name": "Miguel Juárez",
+                             "EmailAddress": "miguelj@microsoft.com"
+                             },
+                             {
+                             "Name": "Omer Gelbard (GILBERT)",
+                             "EmailAddress": "omerg@microsoft.com"
+                             }
+                             ],
                "Location": "Conf Room SANFRAN-1355MKT\/3C06 (10) Carmel Bay AV",
                "IsOrganizer": false
                },
@@ -103,6 +173,12 @@
                "EmailAddress": "miguelj@microsoft.com",
                
                },
+               "Attendees": [
+                             {
+                             "Name": "Miguel Juárez",
+                             "EmailAddress": "miguelj@microsoft.com"
+                             }
+                             ],
                "Location": "Conf Room SANFRAN-1355MKT\/3C06 (10) Carmel Bay AV",
                "IsOrganizer": false
                },
@@ -118,6 +194,12 @@
                "Name": "Jessica Ricasata",
                "EmailAddress": "jessicar@microsoft.com"
                },
+               "Attendees": [
+                             {
+                             "Name": "Jessica Ricasata",
+                             "EmailAddress": "jessicar@microsoft.com"
+                             }
+                             ],
                "Location": "SF: The Commons \/ Redmond: 31\/1007-1008 \/ Skype Meeting",
                "IsOrganizer": false
                },
@@ -133,6 +215,12 @@
                "Name": "Omer Gelbard (GILBERT)",
                "EmailAddress": "omerg@microsoft.com"
                },
+               "Attendees": [
+                             {
+                             "Name": "Omer Gelbard (GILBERT)",
+                             "EmailAddress": "omerg@microsoft.com"
+                             }
+                             ],
                "Location": "Big board area",
                "IsOrganizer": false
                },
@@ -148,6 +236,12 @@
                "Name": "Chandra Garre",
                "EmailAddress": "chandrag@microsoft.com"
                },
+               "Attendees": [
+                             {
+                             "Name": "Chandra Garre",
+                             "EmailAddress": "chandrag@microsoft.com"
+                             }
+                             ],
                "Location": "Conf Room SANFRAN-1355MKT\/3A26 (10) Red Rock AV",
                "IsOrganizer": false
                },
@@ -179,6 +273,12 @@
                "Name": "Chandra Garre",
                "EmailAddress": "chandrag@microsoft.com"
                },
+               "Attendees": [
+                             {
+                             "Name": "Chandra Garre",
+                             "EmailAddress": "chandrag@microsoft.com"
+                             }
+                             ],
                "Location": "",
                "IsOrganizer": false,
                
@@ -195,6 +295,12 @@
                "Name": "Jay Laney",
                "EmailAddress": "jayl@microsoft.com"
                },
+               "Attendees": [
+                             {
+                             "Name": "Jay Laney",
+                             "EmailAddress": "jayl@microsoft.com"
+                             }
+                             ],
                "Location": "Conf Room SANFRAN-1355MKT\/3A21 (18) Bay Bridge Skype Meeting Room",
                "IsOrganizer": false
                },
@@ -210,6 +316,12 @@
                "Name": "Omer Gelbard (GILBERT)",
                "EmailAddress": "omerg@microsoft.com"
                },
+               "Attendees": [
+                             {
+                             "Name": "Omer Gelbard (GILBERT)",
+                             "EmailAddress": "omerg@microsoft.com"
+                             }
+                             ],
                "Location": "Big board area",
                "IsOrganizer": false
                },
@@ -219,12 +331,18 @@
                "Category": "Work",
                "Preview": "From: rsoni@yammer-inc.com\u000d\u000aWhen: 2:00 PM - 3:00 PM January 18, 2018\u000d\u000aSubject: In_inbox & estimates discussion\u000d\u000aLocation: Online meeting; Conf Room SANFRAN-1355MKT\/3C08 (10) Santa Cruz AV\u000d\u000a\u000d\u000a\u000d\u000aMoving this to tomorrow due to conflicts with meetings rel",
                "Start": "2018-01-18T14:00:00-08:00",
-               "End": "2018-01-18T15:00:00-08:00",
+               "End": "2018-01-18T15:30:00-08:00",
                "IsAllDayEvent": false,
                "Organizer": {
                "Name": "Rohan Soni",
                "EmailAddress": "rohans@microsoft.com"
                },
+               "Attendees": [
+                             {
+                             "Name": "Rohan Soni",
+                             "EmailAddress": "rohans@microsoft.com"
+                             }
+                             ],
                "Location": "Online meeting; Conf Room SANFRAN-1355MKT\/3C08 (10) Santa Cruz AV",
                "IsOrganizer": false
                },
@@ -240,6 +358,16 @@
                "Name": "Josh Carrier",
                "EmailAddress": "joshc@microsoft.com"
                },
+               "Attendees": [
+                             {
+                             "Name": "Josh Carrier",
+                             "EmailAddress": "joshc@microsoft.com"
+                             },
+                             {
+                             "Name": "Miguel Juárez",
+                             "EmailAddress": "miguelj@microsoft.com"
+                             }
+                             ],
                "Location": "Online meeting; Conf Room 32\/26 (8)",
                "IsOrganizer": false
                },
@@ -255,6 +383,12 @@
                "Name": "Omer Gelbard (GILBERT)",
                "EmailAddress": "omerg@microsoft.com"
                },
+               "Attendees": [
+                             {
+                             "Name": "Omer Gelbard (GILBERT)",
+                             "EmailAddress": "omerg@microsoft.com"
+                             }
+                             ],
                "Location": "Big board area",
                "IsOrganizer": false
                },
@@ -266,12 +400,12 @@
                "Start": "2018-01-15T00:00:00-08:00",
                "End": "2018-01-19T00:00:00-08:00",
                "IsAllDayEvent": true,
+               "Location": "",
                "Organizer": {
                "Name": "Omer Gelbard (GILBERT)",
                "EmailAddress": "omerg@microsoft.com"
                },
-               "Location": "",
                "IsOrganizer": true
                }
-            ]
+               ]
 }

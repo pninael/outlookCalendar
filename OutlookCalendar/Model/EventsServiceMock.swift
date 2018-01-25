@@ -7,10 +7,9 @@
 //
 
 import Foundation
+import UIKit
 
 class EventsServiceMock {
-    
-    let rangedCalendar = RangedCalendar.shared
     
     func loadEventsFromJson() -> [Event]? {
         guard let path = Bundle.main.path(forResource: "events", ofType: "json") else {
@@ -33,6 +32,17 @@ class EventsServiceMock {
             print(error.localizedDescription)
             return nil
         }
+    }
+    
+    func image(for attendee:Attendee) -> UIImage {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        view.layer.cornerRadius = 25
+        view.backgroundColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
+        let renderer = UIGraphicsImageRenderer(size: view.bounds.size)
+        let image = renderer.image { ctx in
+            view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
+        }
+        return image
     }
 }
 

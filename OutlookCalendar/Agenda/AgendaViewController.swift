@@ -77,10 +77,16 @@ class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if let eventCell = cell as? EventCell {
                 if let event = event(for: indexPath) {
                     eventCell.subjectLabel.text = event.subject
-                    eventCell.timeLabel.text = event.startTime.toString(format: "hh:mm")
-                    eventCell.durationLabel.text = event.endTime.durationDescription(from: event.startTime)
+                    eventCell.timeLabel.text = event.timeDescription
+                    eventCell.durationLabel.text = event.durationDescription
                     eventCell.locationLabel.text = event.location
                     eventCell.categoryView.backgroundColor = event.category?.color
+                    
+                    for attendee in event.attendees {
+                        print("adding attendee \(attendee.name) to \(event.subject)")
+                        let attendeeImage = eventsService.image(for: attendee)
+                        eventCell.attendeesView.addArrangedSubview(AttendeeView(image: attendeeImage))
+                    }
                 }
             }
         }

@@ -9,7 +9,16 @@
 import Foundation
 
 struct Attendee {
-    let user : User
-    let accepted : Bool
-    let isOrganizer : Bool
+    let name : String
+    let email : String
+    
+    init(json: [String: Any]) throws {
+        guard let name = json["Name"] as? String,
+            let email = json["EmailAddress"] as? String
+            else {
+                throw DataError.JSONSerialization("json could not be serialized to a User : \(json) ")
+        }
+        self.name = name
+        self.email = email
+    }
 }

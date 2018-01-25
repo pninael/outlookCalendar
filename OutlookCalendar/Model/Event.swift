@@ -39,6 +39,15 @@ struct Event {
     let attendees : [Attendee]
     
     private let dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+    private let timeFormat = "hh:mm"
+    
+    var timeDescription : String {
+        return startTime.toString(format: "hh:mm")
+    }
+    
+    var durationDescription : String {
+        return endTime.durationDescription(from: startTime)
+    }
     
     init(json: [String: Any]) throws {
         guard let id = json["Id"] as? Int,
@@ -60,7 +69,14 @@ struct Event {
         self.endTime = endTime
         self.isAllDayEvent = isAllDayEvent
         self.location = location
-        self.attendees = []
+        if let attendees = json["Attendees"] as? [[String : Any]] {
+            self.attendees = try attendees.map{ item in
+                return try Attendee(json: item)
+            }
+        }
+        else {
+            self.attendees = []
+        }
     }
 }
 

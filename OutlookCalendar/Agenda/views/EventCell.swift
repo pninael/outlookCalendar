@@ -15,13 +15,15 @@ class EventCell: UITableViewCell {
     private static let margin : CGFloat = 8.0
     private static let spacing : CGFloat = 3.0
     
-    private static let timeLabelWidth : CGFloat = 50.0
+    private static let timeLabelWidth : CGFloat = 60.0
     private static let categoryViewWidth : CGFloat = 4.0
     private static let categoryViewTopMargin : CGFloat = 2.0
-    private static let attendeeViewSize : CGFloat = 50.0
+    private static let attendeeViewSize : CGFloat = 35.0
     
     private static let primaryFont = UIFont.systemFont(ofSize: 14.0)
     private static let secondaryFont = UIFont.systemFont(ofSize: 12.0)
+
+    var categoryView = UIView()
 
     lazy var subjectLabel: UILabel! = {
         let label = UILabel()
@@ -29,8 +31,6 @@ class EventCell: UITableViewCell {
         label.textAlignment = .left
         label.numberOfLines = 2
         
-        //label.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
-
         return label
     }()
     
@@ -39,8 +39,6 @@ class EventCell: UITableViewCell {
         label.font = EventCell.secondaryFont
         label.textAlignment = .left
         
-        //label.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
-
         return label
     }()
     
@@ -49,7 +47,6 @@ class EventCell: UITableViewCell {
         label.font = EventCell.secondaryFont
         label.textAlignment = .left
         
-        //label.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
         return label
     }()
     
@@ -58,24 +55,18 @@ class EventCell: UITableViewCell {
         label.font = EventCell.secondaryFont
         label.textAlignment = .left
         
-        //label.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
-
         return label
     }()
     
     lazy var attendeesView: UIStackView! = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        
-        //stackView.backgroundColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
-        
+        stackView.spacing = EventCell.spacing
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
         return stackView
     }()
     
-    lazy var categoryView: UIView! = {
-        let view = UIView()
-        return view
-    }()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -98,7 +89,7 @@ class EventCell: UITableViewCell {
         super.layoutSubviews()
         
         let timeLabelHeight = timeLabel.text?.size(withAttributes: [NSAttributedStringKey.font: EventCell.secondaryFont]).height ?? 0
-        timeLabel.frame = CGRect(x: EventCell.categoryViewWidth + EventCell.spacing, y: EventCell.margin, width: EventCell.timeLabelWidth, height: timeLabelHeight)
+        timeLabel.frame = CGRect(x: EventCell.categoryViewWidth + EventCell.margin, y: EventCell.margin, width: EventCell.timeLabelWidth, height: timeLabelHeight)
         
         var durationFrame = timeLabel.frame
         durationFrame.origin.y = timeLabel.frame.maxY + EventCell.spacing
@@ -109,34 +100,58 @@ class EventCell: UITableViewCell {
         let subjectLabelWidth = contentView.frame.size.width - subjectLabelX - EventCell.margin
         subjectLabel.frame = CGRect(x: subjectLabelX, y: EventCell.margin, width: subjectLabelWidth, height: subjectLabelHeight)
         
-        var lastFrameY = subjectLabel.frame.maxY
+        var maxY = subjectLabel.frame.maxY
 
-        if attendeesView.subviews.count > 0 {
-            attendeesView.frame = CGRect(x: subjectLabelX, y: subjectLabel.frame.maxY + EventCell.spacing, width: subjectLabelWidth, height: EventCell.attendeeViewSize)
-            lastFrameY = attendeesView.frame.maxY
+        if attendeesView.arrangedSubviews.count > 0 {
+            attendeesView.frame = CGRect(x: subjectLabelX, y: subjectLabel.frame.maxY + EventCell.spacing, width: EventCell.attendeeViewSize * CGFloat(attendeesView.subviews.count) + EventCell.spacing * CGFloat(attendeesView.subviews.count - 1 ) , height: EventCell.attendeeViewSize)
+            
+            for view in attendeesView.arrangedSubviews {
+                view.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)
+                view.frame = CGRect(origin: .zero, size: CGSize(width: EventCell.attendeeViewSize,height: EventCell.attendeeViewSize))
+                view.layer.cornerRadius = EventCell.attendeeViewSize/2
+            }
+
+            maxY = attendeesView.frame.maxY
         }
         
-        let locationLabelHeight = locationLabel.text?.size(withAttributes: [NSAttributedStringKey.font: EventCell.secondaryFont]).height ?? 0
-        locationLabel.frame = CGRect(x: subjectLabelX, y: lastFrameY + EventCell.spacing, width: subjectLabelWidth, height: locationLabelHeight)
-        
-        categoryView.frame = CGRect(x: 0.0, y: EventCell.categoryViewTopMargin, width: EventCell.categoryViewWidth, height: max(durationLabel.frame.maxY, locationLabel.frame.maxY) + EventCell.margin - EventCell.categoryViewTopMargin)
+        if let locationText = locationLabel.text,
+            !locationText.isEmpty {
+            let locationLabelHeight = locationLabel.text?.size(withAttributes: [NSAttributedStringKey.font: EventCell.secondaryFont]).height ?? 0
+            locationLabel.frame = CGRect(x: subjectLabelX, y: maxY + EventCell.spacing, width: subjectLabelWidth, height: locationLabelHeight)
+            maxY = locationLabel.frame.maxY
+        }
+        categoryView.frame = CGRect(x: 0.0, y: EventCell.categoryViewTopMargin, width: EventCell.categoryViewWidth, height: max(maxY, durationLabel.frame.maxY) + EventCell.margin - EventCell.categoryViewTopMargin)
     }
     
     override func prepareForReuse() {
+        super.prepareForReuse()
+        
         timeLabel.text = nil
         durationLabel.text = nil
         subjectLabel.text = nil
         locationLabel.text = nil
-        for view in attendeesView.subviews {
+        
+        for view in attendeesView.arrangedSubviews {
             attendeesView.removeArrangedSubview(view)
+            view.removeFromSuperview()
         }
     }
     
     static func height(for event:Event) -> CGFloat {
-        let subjectHeight = event.subject.size(withAttributes: [NSAttributedStringKey.font: primaryFont]).height
-        let attendeesViewHeight = event.attendees.count > 0 ? attendeeViewSize : 0
-        let locationHeight = event.location.size(withAttributes: [NSAttributedStringKey.font: secondaryFont]).height
         
-        return subjectHeight + attendeesViewHeight + locationHeight + 2 * margin
+        var rightSizeHeight = event.timeDescription.size(withAttributes: [NSAttributedStringKey.font: secondaryFont]).height + 2 * margin
+        rightSizeHeight += event.durationDescription.size(withAttributes: [NSAttributedStringKey.font: secondaryFont]).height + spacing
+        
+        var leftSizeHeight = event.subject.size(withAttributes: [NSAttributedStringKey.font: primaryFont]).height + 2 * margin
+        
+        if event.attendees.count > 0 {
+            leftSizeHeight += attendeeViewSize + spacing
+        }
+        
+        if !event.location.isEmpty {
+            leftSizeHeight += event.location.size(withAttributes: [NSAttributedStringKey.font: secondaryFont]).height + spacing
+        }
+        
+        return max(rightSizeHeight, leftSizeHeight)
     }
 }
