@@ -7,11 +7,20 @@
 //
 
 import Foundation
+import UIKit
 
 enum EventCategory : String {
     case Holiday = "Holiday"
     case Work = "Work"
     case Personal = "Personal"
+    
+    var color : UIColor {
+        switch self {
+            case .Holiday: return #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+            case .Work: return #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+            case .Personal: return #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
+        }
+    }
 }
 
 enum DataError : Error {
@@ -59,7 +68,47 @@ extension Date {
     static func fromString(string: String, withFormat format: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
-        dateFormatter.timeZone = Calendar.current.timeZone
         return dateFormatter.date(from: string)
+    }
+    
+    func toString(format: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: self)
+    }
+    
+    /// Returns the amount of days from another date
+    func days(from date: Date) -> Int {
+        return Calendar.current.dateComponents([.day], from: date, to: self).day ?? 0
+    }
+    /// Returns the amount of hours from another date
+    func hours(from date: Date) -> Int {
+        return Calendar.current.dateComponents([.hour], from: date, to: self).hour ?? 0
+    }
+    /// Returns the amount of minutes from another date
+    func minutes(from date: Date) -> Int {
+        return Calendar.current.dateComponents([.minute], from: date, to: self).minute ?? 0
+    }
+    
+    /// Returns the a custom time interval description from another date
+    func durationDescription(from date: Date) -> String {
+        var duration = ""
+        
+        let daysOffset = days(from: date)
+        let hoursOffset = hours(from: date)
+        let minutesOffset = minutes(from: date) - 60 * hoursOffset
+        
+        if  daysOffset > 0 {
+            duration = "\(daysOffset)d"
+        }
+        else {
+            if hoursOffset > 0 {
+                duration = "\(hoursOffset)h "
+            }
+            if minutesOffset > 0 {
+                duration += "\(minutesOffset)m"
+            }
+        }
+        return duration
     }
 }

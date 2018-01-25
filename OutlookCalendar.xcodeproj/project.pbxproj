@@ -23,6 +23,7 @@
 		47799AB720101BDA00CF625C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47799AB620101BDA00CF625C /* User.swift */; };
 		47799AB920101D9300CF625C /* Attendee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47799AB820101D9300CF625C /* Attendee.swift */; };
 		47DA5275201292EF008B9BEF /* EventsServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DA5274201292EE008B9BEF /* EventsServiceMock.swift */; };
+		47FD5BCC201933450003D200 /* NoEventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FD5BCB201933450003D200 /* NoEventsCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		47799AB620101BDA00CF625C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		47799AB820101D9300CF625C /* Attendee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attendee.swift; sourceTree = "<group>"; };
 		47DA5274201292EE008B9BEF /* EventsServiceMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsServiceMock.swift; sourceTree = "<group>"; };
+		47FD5BCB201933450003D200 /* NoEventsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoEventsCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				4726CBB4200DDA720069E528 /* EventCell.swift */,
+				47FD5BCB201933450003D200 /* NoEventsCell.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				4701840620003810004671B6 /* CalendarViewController.swift in Sources */,
 				47DA5275201292EF008B9BEF /* EventsServiceMock.swift in Sources */,
 				4771B7181FFDC9FC00144A4B /* AppDelegate.swift in Sources */,
+				47FD5BCC201933450003D200 /* NoEventsCell.swift in Sources */,
 				4726CBB1200DC8240069E528 /* WeekDayView.swift in Sources */,
 				47799AB720101BDA00CF625C /* User.swift in Sources */,
 			);

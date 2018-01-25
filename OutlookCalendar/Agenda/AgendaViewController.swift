@@ -22,7 +22,8 @@ class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(EventCell.self, forCellReuseIdentifier: EventCell.reuseIdentifier)
-        
+        tableView.register(NoEventsCell.self, forCellReuseIdentifier: NoEventsCell.reuseIdentifier)
+
         return tableView
     }()
     
@@ -50,11 +51,16 @@ class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        if let event = event(for: indexPath) {
+            return EventCell.height(for: event)
+        }
+        else {
+            return NoEventsCell.height()
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        return 30
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -63,19 +69,24 @@ class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: EventCell.reuseIdentifier, for: indexPath)
         
-        if let eventCell = cell as? EventCell {
-            if let eventsForDate = eventsMap[indexPath.section] {
-                assert(eventsForDate.count > indexPath.row, "TODO")
-                let event = eventsForDate[indexPath.row]
-                eventCell.subjectLabel.text = event.subject
-            }
-            else {
-                eventCell.subjectLabel.text = "No events"
+        let cell : UITableViewCell
+        
+        if eventsMap[indexPath.section] != nil {
+            cell = tableView.dequeueReusableCell(withIdentifier: EventCell.reuseIdentifier, for: indexPath)
+            if let eventCell = cell as? EventCell {
+                if let event = event(for: indexPath) {
+                    eventCell.subjectLabel.text = event.subject
+                    eventCell.timeLabel.text = event.startTime.toString(format: "hh:mm")
+                    eventCell.durationLabel.text = event.endTime.durationDescription(from: event.startTime)
+                    eventCell.locationLabel.text = event.location
+                    eventCell.categoryView.backgroundColor = event.category?.color
+                }
             }
         }
-        
+        else {
+            cell = tableView.dequeueReusableCell(withIdentifier: NoEventsCell.reuseIdentifier, for: indexPath)
+        }
         return cell
     }
     
@@ -99,7 +110,7 @@ class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    func fetchEvents() {
+    private func fetchEvents() {
         
         guard let events = eventsService.loadEventsFromJson() else { return }
         
@@ -116,6 +127,13 @@ class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
             }
         }
+    }
+    
+    private func event(for indexPath: IndexPath) -> Event? {
+        guard let eventsForDate = eventsMap[indexPath.section] else {
+            return nil
+        }
+        return eventsForDate[indexPath.row]
     }
 }
 
