@@ -24,6 +24,7 @@
 		47DA5275201292EF008B9BEF /* EventsServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DA5274201292EE008B9BEF /* EventsServiceMock.swift */; };
 		47FD5BCC201933450003D200 /* NoEventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FD5BCB201933450003D200 /* NoEventsCell.swift */; };
 		47FD5BFA2019D13B0003D200 /* AttendeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FD5BF92019D13B0003D200 /* AttendeeView.swift */; };
+		47FD5BFE201AA88F0003D200 /* ContinuousSectionsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FD5BFD201AA88F0003D200 /* ContinuousSectionsLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		47DA5274201292EE008B9BEF /* EventsServiceMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsServiceMock.swift; sourceTree = "<group>"; };
 		47FD5BCB201933450003D200 /* NoEventsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoEventsCell.swift; sourceTree = "<group>"; };
 		47FD5BF92019D13B0003D200 /* AttendeeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeeView.swift; sourceTree = "<group>"; };
+		47FD5BFD201AA88F0003D200 /* ContinuousSectionsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinuousSectionsLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			children = (
 				4726CBB2200DD6780069E528 /* views */,
 				4701840520003810004671B6 /* CalendarViewController.swift */,
+				47FD5BFD201AA88F0003D200 /* ContinuousSectionsLayout.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				4726CBB5200DDA720069E528 /* EventCell.swift in Sources */,
 				4701840620003810004671B6 /* CalendarViewController.swift in Sources */,
 				47DA5275201292EF008B9BEF /* EventsServiceMock.swift in Sources */,
+				47FD5BFE201AA88F0003D200 /* ContinuousSectionsLayout.swift in Sources */,
 				4771B7181FFDC9FC00144A4B /* AppDelegate.swift in Sources */,
 				47FD5BCC201933450003D200 /* NoEventsCell.swift in Sources */,
 				4726CBB1200DC8240069E528 /* WeekDayView.swift in Sources */,

@@ -17,7 +17,10 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     let rangedCalendar = RangedCalendar.shared
     
     private lazy var daysCollectionView: UICollectionView! = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        let layout = ContinuousSectionsLayout()
+        layout.numberOfColumns = numberOfDaysInWeek
+        layout.delegate = self
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -81,6 +84,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         if let dayCell = cell as? DayCell {
             if let date = rangedCalendar.dateFromStartDateByAddingMonths(months: indexPath.section, andDays: indexPath.row) {
                 dayCell.title.text = String(Calendar.current.component(.day, from: date))
+                dayCell.backgroundColor = indexPath.section % 2 == 0 ?  #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.9701757813, green: 0.9701757813, blue: 0.9701757813, alpha: 1) 
             }
         }
         
@@ -105,12 +109,12 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         weekDaysStackView.frame = CGRect(x: 0,
                                          y: top,
                                          width: view.frame.width,
-                                         height: 50)
+                                         height: 30)
         
         daysCollectionView.frame = CGRect(x: 0,
                                           y: weekDaysStackView.frame.maxY,
                                           width: view.frame.width,
-                                          height: view.frame.height - 50)
+                                          height: view.frame.height - 30)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -128,22 +132,10 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
 }
 
-extension CalendarViewController : UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let width = Int(collectionView.frame.width/CGFloat(numberOfDaysInWeek))
-        return CGSize(width: width, height: width)
+extension CalendarViewController : ContinuousSectionsLayoutDelegte {
+    func collectionView(collectionView: UICollectionView, heightForItemAtIndexPath indexPath: IndexPath) -> CGFloat {
+        return 50
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 1.0, left: 0, bottom: 0, right: 0)
-    }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1.0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
 }
