@@ -80,7 +80,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         if let dayCell = cell as? DayCell {
             if let date = rangedCalendar.dateFromStartDateByAddingMonths(months: indexPath.section, andDays: indexPath.row) {
-                dayCell.title.text = "\(rangedCalendar.calendar.component(.day, from: date))/\(rangedCalendar.calendar.component(.month, from: date))/\(rangedCalendar.calendar.component(.year, from: date) - 2000)"
+                dayCell.title.text = String(Calendar.current.component(.day, from: date))
             }
         }
         

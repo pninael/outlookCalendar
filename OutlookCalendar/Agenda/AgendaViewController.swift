@@ -60,12 +60,36 @@ class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
+        return 25
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard let date = rangedCalendar.dateFromStartDateByAddingDays(days: section) else { return "" }
-        return "\(rangedCalendar.calendar.component(.day, from: date))/\(rangedCalendar.calendar.component(.month, from: date))/\(rangedCalendar.calendar.component(.year, from: date) - 2000)"
+        let day = Calendar.current.component(.day, from: date)
+        let year = Calendar.current.component(.year, from: date)
+        return "\(date.daySymbol), \(day) \(date.monthSymbol) \(year)"
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView  = UIView()
+        headerView.backgroundColor = #colorLiteral(red: 0.950710454, green: 0.950710454, blue: 0.950710454, alpha: 1)
+        
+        let headerLabel = UILabel(frame: CGRect(x: 8, y: 5, width:
+            tableView.bounds.size.width, height: tableView.bounds.size.height))
+        headerLabel.font =  UIFont.systemFont(ofSize: 14.0)
+        headerLabel.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        headerLabel.text = self.tableView(self.tableView, titleForHeaderInSection: section)
+        headerLabel.sizeToFit()
+        
+        guard let date = rangedCalendar.dateFromStartDateByAddingDays(days: section) else {
+            return view
+        }
+        let day = Calendar.current.component(.day, from: date)
+        let year = Calendar.current.component(.year, from: date)
+        headerLabel.text = "\(date.daySymbol), \(day) \(date.monthSymbol) \(year)"
+        
+        headerView.addSubview(headerLabel)
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

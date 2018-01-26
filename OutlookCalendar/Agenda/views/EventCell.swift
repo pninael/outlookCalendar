@@ -16,12 +16,12 @@ class EventCell: UITableViewCell {
     private static let spacing : CGFloat = 3.0
     
     private static let timeLabelWidth : CGFloat = 60.0
-    private static let categoryViewWidth : CGFloat = 4.0
-    private static let categoryViewTopMargin : CGFloat = 2.0
+    private static let categoryViewSize : CGFloat = 10.0
     private static let attendeeViewSize : CGFloat = 45.0
+    private static let subjectLabelOffset : CGFloat = 15.0
     
     private static let primaryFont = UIFont.systemFont(ofSize: 16.0)
-    private static let secondaryFont = UIFont.systemFont(ofSize: 14.0)
+    private static let secondaryFont = UIFont.systemFont(ofSize: 12.0, weight: .light)
 
     var categoryView = UIView()
     var attendeesView = UIView()
@@ -85,17 +85,26 @@ class EventCell: UITableViewCell {
         super.layoutSubviews()
         
         let timeLabelHeight = timeLabel.text?.size(withAttributes: [NSAttributedStringKey.font: EventCell.secondaryFont]).height ?? 0
-        timeLabel.frame = CGRect(x: EventCell.categoryViewWidth + EventCell.margin, y: EventCell.margin, width: EventCell.timeLabelWidth, height: timeLabelHeight)
+        timeLabel.frame = CGRect(x: EventCell.margin, y: EventCell.margin, width: EventCell.timeLabelWidth, height: timeLabelHeight)
         
         var durationFrame = timeLabel.frame
         durationFrame.origin.y = timeLabel.frame.maxY + EventCell.spacing
         durationLabel.frame = durationFrame
         
-        let subjectLabelX = timeLabel.frame.maxX + EventCell.spacing
+        categoryView.frame = CGRect(x: timeLabel.frame.maxX,
+                                    y: EventCell.margin,
+                                    width: EventCell.categoryViewSize,
+                                    height: EventCell.categoryViewSize)
+        
+        categoryView.layer.cornerRadius = EventCell.categoryViewSize / 2
+        categoryView.center.y = timeLabel.center.y
+        
+        let subjectLabelX = categoryView.frame.maxX + EventCell.subjectLabelOffset
         let subjectLabelHeight = subjectLabel.text?.size(withAttributes: [NSAttributedStringKey.font: EventCell.primaryFont]).height ?? 0
         let subjectLabelWidth = contentView.frame.size.width - subjectLabelX - EventCell.margin
         subjectLabel.frame = CGRect(x: subjectLabelX, y: EventCell.margin, width: subjectLabelWidth, height: subjectLabelHeight)
-        
+        subjectLabel.center.y = categoryView.center.y
+
         var maxY = subjectLabel.frame.maxY
 
         if attendeesView.subviews.count > 0 {
@@ -117,7 +126,6 @@ class EventCell: UITableViewCell {
             locationLabel.frame = CGRect(x: subjectLabelX, y: maxY + EventCell.spacing, width: subjectLabelWidth, height: locationLabelHeight)
             maxY = locationLabel.frame.maxY
         }
-        categoryView.frame = CGRect(x: 0.0, y: EventCell.categoryViewTopMargin, width: EventCell.categoryViewWidth, height: max(maxY, durationLabel.frame.maxY) + EventCell.margin - EventCell.categoryViewTopMargin)
     }
     
     override func prepareForReuse() {

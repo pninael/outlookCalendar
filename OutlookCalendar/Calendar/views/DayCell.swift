@@ -20,8 +20,7 @@ class DayCell: UICollectionViewCell {
         backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
         title = UILabel(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
-        title.font = UIFont.systemFont(ofSize: UIFont.labelFontSize)
-        title.font = UIFont.systemFont(ofSize: 10.0)
+        title.font = UIFont.systemFont(ofSize: 18.0)
 
         title.textAlignment = .center
         contentView.addSubview(title)
