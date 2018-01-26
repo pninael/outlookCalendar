@@ -53,16 +53,9 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         view.addSubview(weekDaysStackView)
         view.addSubview(daysCollectionView)
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        let today = Date()
-        chooseDate(date:today, animated: false)
-    }
 
     func chooseDate(date:Date, animated: Bool) {
-        let day = rangedCalendar.calendar.component(.day, from: date)
+        let day = Calendar.current.component(.day, from: date)
         if let month = rangedCalendar.monthNumberInRange(forDate: date) {
             let indexPath = IndexPath(item: day-1, section: month)
             daysCollectionView.selectItem(at: indexPath, animated: animated, scrollPosition: .top)
@@ -115,16 +108,13 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
                                           y: weekDaysStackView.frame.maxY,
                                           width: view.frame.width,
                                           height: view.frame.height - 30)
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let date = rangedCalendar.dateFromStartDateByAddingMonths(months: indexPath.section, andDays: indexPath.row) {
             observer?.dateWasChosen(sender: self, date: date)
         }
-    }
-    
-    func dateWasChosen(date: Date) {
-        chooseDate(date: date, animated: true)
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -136,6 +126,4 @@ extension CalendarViewController : ContinuousSectionsLayoutDelegte {
     func collectionView(collectionView: UICollectionView, heightForItemAtIndexPath indexPath: IndexPath) -> CGFloat {
         return 50
     }
-    
-    
 }

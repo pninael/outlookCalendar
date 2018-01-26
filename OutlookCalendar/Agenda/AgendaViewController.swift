@@ -36,12 +36,6 @@ class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         view.addSubview(tableView)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        let today = Date()
-        chooseDate(date:today, animated: false)
-    }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return rangedCalendar.numberOfDaysInRange
     }
@@ -124,10 +118,6 @@ class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDa
             tableView.scrollToSection(section: day, animated: animated)
             topVisibleCellIndexPath = tableView.indexPathsForVisibleRows?[0]
         }
-    }
-    
-    func dateWasChosen(date: Date) {
-        chooseDate(date: date, animated: true)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

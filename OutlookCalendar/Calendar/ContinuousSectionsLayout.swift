@@ -17,7 +17,7 @@ class ContinuousSectionsLayout: UICollectionViewLayout {
     var delegate : ContinuousSectionsLayoutDelegte!
     var numberOfColumns = 1
     
-    private var attributesCache = [UICollectionViewLayoutAttributes]()
+    private var attributesCache = [IndexPath : UICollectionViewLayoutAttributes]()
     private var contentHeight : CGFloat = 0
     
     private var width : CGFloat {
@@ -51,7 +51,7 @@ class ContinuousSectionsLayout: UICollectionViewLayout {
                     let frame = CGRect(x: xOffsets[column], y: yOffsets[column], width: columnWidth, height: height)
                     let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
                     attributes.frame = frame
-                    attributesCache.append(attributes)
+                    attributesCache[indexPath] = attributes
                     contentHeight = max(contentHeight, frame.maxY)
                     yOffsets[column] = yOffsets[column] + height
                     column = column >= (numberOfColumns - 1) ? 0 : column+1
@@ -63,11 +63,15 @@ class ContinuousSectionsLayout: UICollectionViewLayout {
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var layoutAttributes = [UICollectionViewLayoutAttributes]()
         
-        for attributes in attributesCache {
+        for attributes in attributesCache.values {
             if rect.intersects(attributes.frame) {
                 layoutAttributes.append(attributes)
             }
         }
         return layoutAttributes
+    }
+    
+    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        return attributesCache[indexPath]
     }
 }

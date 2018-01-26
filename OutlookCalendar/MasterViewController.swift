@@ -32,6 +32,12 @@ class MasterViewController: UIViewController {
         calendarViewController.observer = self
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let today = Date()
+        chooseDate(date:today, animated: false)
+    }
+    
     private func addContentController(_ child: UIViewController) {
         addChildViewController(child)
         view.addSubview(child.view)
@@ -80,6 +86,11 @@ extension MasterViewController : CalendarObserver {
         else if sender == agendaViewController {
             calendarViewController.chooseDate(date: date, animated: true)
         }
+    }
+    
+    func chooseDate(date:Date, animated: Bool) {
+        agendaViewController.chooseDate(date: date, animated: true)
+        calendarViewController.chooseDate(date: date, animated: true)
     }
     
     func calendarWillStartScrolling(sender: UIViewController) {
