@@ -8,12 +8,19 @@
 
 import UIKit
 
+// A view controller for displaying the agenda table view
 class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     let rangedCalendar = RangedCalendar.shared
     var observer : CalendarObserver?
+    
+    // IndexPath of the top visible cell
     private var topVisibleCellIndexPath : IndexPath?
+    
+    // A map between a date's section number in the agenda table, and its corresponding events list
     private var eventsMap = [Int:[Event]]()
+    
+    // The events data service
     private let eventsService = EventsServiceMock()
     
     private lazy var tableView: UITableView! = {
@@ -26,6 +33,9 @@ class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         return tableView
     }()
+    
+    private let headerViewTitleVerticalMargin : CGFloat = 5
+    private let headerViewTitleHorizontalMargin : CGFloat = 8
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +51,9 @@ class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        // if there are events for this section, number of rows is events count
+        // if not - there is one row to display the "no events" text
         return eventsMap[section]?.count ?? 1
     }
     
@@ -58,7 +71,14 @@ class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard let date = rangedCalendar.dateFromStartDateByAddingDays(days: section) else { return "" }
+        
+        // get the section's corresponding date
+        guard let date = rangedCalendar.dateFromStartDateByAddingDays(days: section) else {
+            return ""
+        }
+        
+        // return a string representation of the date, in the format "daySymbol, day monthSymbol year"
+        // for example: "Sunday, 10 January 2018"
         let day = Calendar.current.component(.day, from: date)
         let year = Calendar.current.component(.year, from: date)
         return "\(date.daySymbol), \(day) \(date.monthSymbol) \(year)"
@@ -68,20 +88,14 @@ class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let headerView  = UIView()
         headerView.backgroundColor = #colorLiteral(red: 0.950710454, green: 0.950710454, blue: 0.950710454, alpha: 1)
         
-        let headerLabel = UILabel(frame: CGRect(x: 8, y: 5, width:
-            tableView.bounds.size.width, height: tableView.bounds.size.height))
+        let headerLabel = UILabel(frame: CGRect(x: headerViewTitleHorizontalMargin,
+                                                y: headerViewTitleVerticalMargin,
+                                                width: tableView.bounds.size.width,
+                                                height: tableView.bounds.size.height))
         headerLabel.font =  UIFont.systemFont(ofSize: 14.0)
         headerLabel.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         headerLabel.text = self.tableView(self.tableView, titleForHeaderInSection: section)
         headerLabel.sizeToFit()
-        
-        guard let date = rangedCalendar.dateFromStartDateByAddingDays(days: section) else {
-            return view
-        }
-        let day = Calendar.current.component(.day, from: date)
-        let year = Calendar.current.component(.year, from: date)
-        headerLabel.text = "\(date.daySymbol), \(day) \(date.monthSymbol) \(year)"
-        
         headerView.addSubview(headerLabel)
         return headerView
     }
@@ -90,20 +104,20 @@ class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let cell : UITableViewCell
         
+        // if there are events to display for the section
         if eventsMap[indexPath.section] != nil {
             cell = tableView.dequeueReusableCell(withIdentifier: EventCell.reuseIdentifier, for: indexPath)
-            if let eventCell = cell as? EventCell {
-                if let event = event(for: indexPath) {
-                    eventCell.subjectLabel.text = event.subject
-                    eventCell.timeLabel.text = event.timeDescription
-                    eventCell.durationLabel.text = event.durationDescription
-                    eventCell.locationLabel.text = event.location
-                    eventCell.categoryView.backgroundColor = event.category?.color
+            if let eventCell = cell as? EventCell,
+                let event = event(for: indexPath) {
+                eventCell.subjectLabel.text = event.subject
+                eventCell.timeLabel.text = event.timeDescription
+                eventCell.durationLabel.text = event.durationDescription
+                eventCell.locationLabel.text = event.location
+                eventCell.categoryView.backgroundColor = event.category?.color
                     
-                    for attendee in event.attendees {
-                        let attendeeImage = eventsService.image(for: attendee)
-                        eventCell.attendeesView.addSubview(AttendeeView(image: attendeeImage))
-                    }
+                for attendee in event.attendees {
+                    let attendeeImage = eventsService.image(for: attendee)
+                    eventCell.attendeesView.addSubview(AttendeeView(image: attendeeImage))
                 }
             }
         }
@@ -111,13 +125,6 @@ class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell = tableView.dequeueReusableCell(withIdentifier: NoEventsCell.reuseIdentifier, for: indexPath)
         }
         return cell
-    }
-    
-    func chooseDate(date:Date, animated: Bool) {
-        if let day = rangedCalendar.dayNumberInRange(forDate: date) {
-            tableView.scrollToSection(section: day, animated: animated)
-            topVisibleCellIndexPath = tableView.indexPathsForVisibleRows?[0]
-        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -133,9 +140,20 @@ class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         observer?.calendarWillStartScrolling(sender: self)
     }
     
+    // scroll to the given date
+    func chooseDate(date:Date, animated: Bool) {
+        if let day = rangedCalendar.dayNumberInRange(forDate: date) {
+            tableView.scrollToSection(section: day, animated: animated)
+            topVisibleCellIndexPath = tableView.indexPathsForVisibleRows?[0]
+        }
+    }
+    
+    // Fetch events and build eventsMap
     private func fetchEvents() {
         
-        guard let events = eventsService.loadEventsFromJson() else { return }
+        guard let events = eventsService.loadEventsFromJson() else {
+            return
+        }
         
         events.forEach { event in
             if let startDayNumberInRangedCalendar = rangedCalendar.dayNumberInRange(forDate: event.startTime),
@@ -152,17 +170,11 @@ class AgendaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    // Returns the event to display for the index path
     private func event(for indexPath: IndexPath) -> Event? {
         guard let eventsForDate = eventsMap[indexPath.section] else {
             return nil
         }
         return eventsForDate[indexPath.row]
-    }
-}
-
-extension UITableView {
-    func scrollToSection(section: Int, animated: Bool) {
-        let indexPath = IndexPath(row: NSNotFound, section: section)
-        scrollToRow(at: indexPath, at: .top, animated: animated)
     }
 }

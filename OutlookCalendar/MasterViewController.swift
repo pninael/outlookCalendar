@@ -13,6 +13,9 @@ protocol CalendarObserver {
     func calendarWillStartScrolling(sender: UIViewController)
 }
 
+/*
+ The masterViewController displays and controls the calendar and agenda view controllers.
+ */
 class MasterViewController: UIViewController {
 
     private let calendarExpandedPropotion : CGFloat = 0.5
@@ -34,6 +37,8 @@ class MasterViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        // scroll to today
         let today = Date()
         chooseDate(date:today, animated: false)
     }
@@ -47,14 +52,14 @@ class MasterViewController: UIViewController {
     private func setCalendarProportion(proportion: CGFloat, animated: Bool) {
         let layoutViews : () -> Void = {
             self.calendarViewController.view.frame = CGRect(x: 0,
-                                                       y: 0,
-                                                       width: self.view.bounds.size.width,
-                                                       height: self.view.bounds.size.height * proportion)
+                                                            y: 0,
+                                                            width: self.view.bounds.size.width,
+                                                            height: self.view.bounds.size.height * proportion)
             
             self.agendaViewController.view.frame = CGRect(x: 0,
-                                                     y: self.calendarViewController.view.frame.maxY,
-                                                     width: self.view.bounds.size.width,
-                                                     height: self.view.bounds.size.height * (1 - proportion))
+                                                          y: self.calendarViewController.view.frame.maxY,
+                                                          width: self.view.bounds.size.width,
+                                                          height: self.view.bounds.size.height * (1 - proportion))
         }
         
         if animated {
@@ -78,8 +83,11 @@ extension MasterViewController : CalendarObserver {
     
     func dateWasChosen(sender: UIViewController, date: Date) {
         
+        // Update the VC title to show the selected date's month
         title = date.monthSymbol
         
+        // Sync the calendar and agenda views. When a date was selected in one of them , nofify
+        // the other so it shows the same date.
         if sender == calendarViewController {
             agendaViewController.chooseDate(date: date, animated: true)
         }
@@ -95,6 +103,7 @@ extension MasterViewController : CalendarObserver {
     
     func calendarWillStartScrolling(sender: UIViewController) {
         
+        // The view who is currently being scrolled should be explanded
         if sender == calendarViewController {
             expandCalendar(animated: true)
         }

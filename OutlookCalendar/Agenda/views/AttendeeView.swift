@@ -8,11 +8,10 @@
 
 import UIKit
 
+// A view to display an event's attendees
 class AttendeeView: UIView {
     
-    var imageView : UIImageView! {
-        return UIImageView()
-    }
+    var imageView = UIImageView()
     
     init(image:UIImage) {
         super.init(frame:.zero)

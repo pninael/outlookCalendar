@@ -8,20 +8,21 @@
 
 import UIKit
 
+// View for displaying a weekDay in the calendar header
 class WeekDayView: UIView {
     
-    var title: UILabel!
+    var title: UILabel! = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: UIFont.labelFontSize)
+        label.font = UIFont.systemFont(ofSize: 15.0)
+        label.textAlignment = .center
+        return label
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        
-        title = UILabel()
-        title.font = UIFont.systemFont(ofSize: UIFont.labelFontSize)
-        title.font = UIFont.systemFont(ofSize: 15.0)
-        
-        title.textAlignment = .center
         addSubview(title)
     }
     
@@ -31,7 +32,6 @@ class WeekDayView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         title.frame = CGRect(origin: .zero, size: frame.size)
     }
 }

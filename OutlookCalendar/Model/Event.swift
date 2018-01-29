@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// Event Category
 enum EventCategory : String {
     case Holiday = "Holiday"
     case Work = "Work"
@@ -23,6 +24,7 @@ enum EventCategory : String {
     }
 }
 
+// A Data serialization error
 enum DataError : Error {
     case JSONSerialization(String)
 }
@@ -42,14 +44,18 @@ struct Event {
     private let timeFormat = "hh:mm"
     private let allDayString = "ALL DAY"
     
+    // Returns a string representation for the event time
     var timeDescription : String {
         return isAllDayEvent ? allDayString : startTime.toString(format: "hh:mm")
     }
     
+    // Returns a string representation for the event duration
     var durationDescription : String {
         return endTime.durationDescription(from: startTime)
     }
     
+    // Initialize an event from a json
+    // Throws a DataError if the josn could not be deserialized into an event
     init(json: [String: Any]) throws {
         guard let id = json["Id"] as? Int,
             let subject = json["Subject"] as? String,
@@ -78,65 +84,5 @@ struct Event {
         else {
             self.attendees = []
         }
-    }
-}
-
-extension Date {
-    
-    var monthSymbol : String {
-        let monthNumber = Calendar.current.component(.month, from: self)
-        return DateFormatter().monthSymbols[monthNumber - 1]
-    }
-    
-    var daySymbol : String {
-        let dayNumber = Calendar.current.component(.weekday, from: self)
-        return DateFormatter().weekdaySymbols[dayNumber - 1]
-    }
-    
-    static func fromString(string: String, withFormat format: String) -> Date? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format
-        return dateFormatter.date(from: string)
-    }
-    
-    func toString(format: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format
-        return dateFormatter.string(from: self)
-    }
-    
-    /// Returns the amount of days from another date
-    func days(from date: Date) -> Int {
-        return Calendar.current.dateComponents([.day], from: date, to: self).day ?? 0
-    }
-    /// Returns the amount of hours from another date
-    func hours(from date: Date) -> Int {
-        return Calendar.current.dateComponents([.hour], from: date, to: self).hour ?? 0
-    }
-    /// Returns the amount of minutes from another date
-    func minutes(from date: Date) -> Int {
-        return Calendar.current.dateComponents([.minute], from: date, to: self).minute ?? 0
-    }
-    
-    /// Returns the a custom time interval description from another date
-    func durationDescription(from date: Date) -> String {
-        var duration = ""
-        
-        let daysOffset = days(from: date)
-        let hoursOffset = hours(from: date)
-        let minutesOffset = minutes(from: date) - 60 * hoursOffset
-        
-        if  daysOffset > 0 {
-            duration = "\(daysOffset)d"
-        }
-        else {
-            if hoursOffset > 0 {
-                duration = "\(hoursOffset)h "
-            }
-            if minutesOffset > 0 {
-                duration += "\(minutesOffset)m"
-            }
-        }
-        return duration
     }
 }

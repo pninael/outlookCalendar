@@ -9,8 +9,10 @@
 import Foundation
 import UIKit
 
+// A mock for returning calendar events
 class EventsServiceMock {
     
+    // Load events from the "events.json" file
     func loadEventsFromJson() -> [Event]? {
         guard let path = Bundle.main.path(forResource: "events", ofType: "json") else {
             return nil
@@ -34,26 +36,18 @@ class EventsServiceMock {
         }
     }
     
+    // Returns an image placeholder for an attendee
+    // TODO: set a color for each attendee, add a label with his name's acronyms
     func image(for attendee:Attendee) -> UIImage {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         view.layer.cornerRadius = 25
         view.backgroundColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
         let renderer = UIGraphicsImageRenderer(size: view.bounds.size)
+        
+        // turn the view into an image
         let image = renderer.image { ctx in
             view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
         }
         return image
-    }
-}
-
-extension Collection {
-    func toDictionary<K, V>(transform:(_ element: Iterator.Element) -> [K : V]) -> [K : V] {
-        var dictionary = [K : V]()
-        self.forEach { element in
-            for (key, value) in transform(element) {
-                dictionary[key] = value
-            }
-        }
-        return dictionary
     }
 }

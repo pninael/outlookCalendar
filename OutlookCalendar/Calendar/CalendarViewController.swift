@@ -8,18 +8,23 @@
 
 import UIKit
 
+// A view controller for displaying the calendar collection view
 class CalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var observer : CalendarObserver?
-
-    let numberOfDaysInWeek = 7
     
-    let rangedCalendar = RangedCalendar.shared
+    private let rangedCalendar = RangedCalendar.shared
+    private let numberOfDaysInWeek = 7
+    
+    private let weekDaysHeaderHeight : CGFloat = 30.0
     
     private lazy var daysCollectionView: UICollectionView! = {
-        let layout = ContinuousSectionsLayout()
+        
+        // We use the ContinuousSectionsLayout so sections dont break into new lines
+        let layout = ContinuousSectionsGridLayout()
         layout.numberOfColumns = numberOfDaysInWeek
         layout.delegate = self
+        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         collectionView.delegate = self
@@ -29,13 +34,14 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         return collectionView
     }()
 
+    // This view is displayed as the calendar header, and shows the week days titles
     private lazy var weekDaysStackView : UIStackView! = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
+        
         let dateFormatter = DateFormatter()
-
         for weekDay in 0..<numberOfDaysInWeek {
             let view = WeekDayView()
             view.title.text = dateFormatter.shortWeekdaySymbols[weekDay]
@@ -54,17 +60,17 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         view.addSubview(daysCollectionView)
     }
 
+    // Scroll to the given date
     func chooseDate(date:Date, animated: Bool) {
-        let day = Calendar.current.component(.day, from: date)
+        let day = rangedCalendar.calendar.component(.day, from: date)
         if let month = rangedCalendar.monthNumberInRange(forDate: date) {
             let indexPath = IndexPath(item: day-1, section: month)
             daysCollectionView.selectItem(at: indexPath, animated: animated, scrollPosition: .top)
         }
     }
     
-    ///MARK - UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return rangedCalendar.numberOfDaysInMonth(monthNumberInRange: section) ?? 0
+        return rangedCalendar.numberOfDaysInMonth(forMonthNumberInRange: section) ?? 0
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -75,6 +81,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DayCell.reuseIdentifier, for: indexPath)
         
         if let dayCell = cell as? DayCell {
+            // get the date to display for the indexPath
             if let date = rangedCalendar.dateFromStartDateByAddingMonths(months: indexPath.section, andDays: indexPath.row) {
                 dayCell.title.text = String(Calendar.current.component(.day, from: date))
                 dayCell.backgroundColor = indexPath.section % 2 == 0 ?  #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.9701757813, green: 0.9701757813, blue: 0.9701757813, alpha: 1) 
@@ -83,8 +90,17 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         cell.selectedBackgroundView = {
             let backgroundView = UIView(frame: CGRect(origin: .zero, size: cell.frame.size))
-            backgroundView.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
-            backgroundView.layer.cornerRadius = backgroundView.frame.size.width/2
+            backgroundView.backgroundColor = cell.backgroundColor
+            
+            let selectedCircleSize = backgroundView.frame.size.width * 0.8
+            let selectedCircleView = UIView(frame: CGRect(x: (cell.frame.size.width - selectedCircleSize) / 2,
+                                                          y: (cell.frame.size.height - selectedCircleSize) / 2,
+                                                          width: selectedCircleSize,
+                                                          height: selectedCircleSize))
+            selectedCircleView.backgroundColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
+            selectedCircleView.layer.cornerRadius = selectedCircleSize/2
+            
+            backgroundView.addSubview(selectedCircleView)
             return backgroundView
         }()
         
@@ -102,12 +118,12 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         weekDaysStackView.frame = CGRect(x: 0,
                                          y: top,
                                          width: view.frame.width,
-                                         height: 30)
+                                         height: weekDaysHeaderHeight)
         
         daysCollectionView.frame = CGRect(x: 0,
                                           y: weekDaysStackView.frame.maxY,
                                           width: view.frame.width,
-                                          height: view.frame.height - 30)
+                                          height: view.frame.height - weekDaysHeaderHeight)
         
     }
     
@@ -122,7 +138,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
 }
 
-extension CalendarViewController : ContinuousSectionsLayoutDelegte {
+extension CalendarViewController : ContinuousSectionsGridLayoutDelegte {
     func collectionView(collectionView: UICollectionView, heightForItemAtIndexPath indexPath: IndexPath) -> CGFloat {
         return 50
     }

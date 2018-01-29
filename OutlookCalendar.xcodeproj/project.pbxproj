@@ -14,6 +14,10 @@
 		4726CBAF200C06600069E528 /* AgendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4726CBAE200C06600069E528 /* AgendaViewController.swift */; };
 		4726CBB1200DC8240069E528 /* WeekDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4726CBB0200DC8240069E528 /* WeekDayView.swift */; };
 		4726CBB5200DDA720069E528 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4726CBB4200DDA720069E528 /* EventCell.swift */; };
+		476AF58F201EFA55002C6FD7 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AF58E201EFA55002C6FD7 /* Calendar.swift */; };
+		476AF594201EFEC5002C6FD7 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AF593201EFEC5002C6FD7 /* Date.swift */; };
+		476AF596201F03C8002C6FD7 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AF595201F03C8002C6FD7 /* TableView.swift */; };
+		476AF598201F06C9002C6FD7 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AF597201F06C9002C6FD7 /* UILabel.swift */; };
 		4771B7181FFDC9FC00144A4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4771B7171FFDC9FC00144A4B /* AppDelegate.swift */; };
 		4771B71F1FFDC9FC00144A4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4771B71E1FFDC9FC00144A4B /* Assets.xcassets */; };
 		4771B7221FFDC9FC00144A4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4771B7201FFDC9FC00144A4B /* LaunchScreen.storyboard */; };
@@ -45,6 +49,10 @@
 		4726CBAE200C06600069E528 /* AgendaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaViewController.swift; sourceTree = "<group>"; };
 		4726CBB0200DC8240069E528 /* WeekDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayView.swift; sourceTree = "<group>"; };
 		4726CBB4200DDA720069E528 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		476AF58E201EFA55002C6FD7 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
+		476AF593201EFEC5002C6FD7 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		476AF595201F03C8002C6FD7 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
+		476AF597201F06C9002C6FD7 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		4771B7141FFDC9FC00144A4B /* OutlookCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutlookCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4771B7171FFDC9FC00144A4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4771B71E1FFDC9FC00144A4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -83,9 +91,9 @@
 		4726CBAA200BF4BD0069E528 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				4726CBB2200DD6780069E528 /* views */,
 				4701840520003810004671B6 /* CalendarViewController.swift */,
 				47FD5BFD201AA88F0003D200 /* ContinuousSectionsLayout.swift */,
+				4726CBB2200DD6780069E528 /* views */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -93,8 +101,8 @@
 		4726CBAB200BF4D70069E528 /* Agenda */ = {
 			isa = PBXGroup;
 			children = (
-				4726CBB3200DDA4B0069E528 /* views */,
 				4726CBAE200C06600069E528 /* AgendaViewController.swift */,
+				4726CBB3200DDA4B0069E528 /* views */,
 			);
 			path = Agenda;
 			sourceTree = "<group>";
@@ -116,6 +124,17 @@
 				47FD5BF92019D13B0003D200 /* AttendeeView.swift */,
 			);
 			path = views;
+			sourceTree = "<group>";
+		};
+		476AF590201EFA71002C6FD7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				476AF58E201EFA55002C6FD7 /* Calendar.swift */,
+				476AF593201EFEC5002C6FD7 /* Date.swift */,
+				476AF595201F03C8002C6FD7 /* TableView.swift */,
+				476AF597201F06C9002C6FD7 /* UILabel.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		4771B70B1FFDC9FC00144A4B = {
@@ -144,6 +163,7 @@
 				47799AAE20101A5800CF625C /* Model */,
 				4726CBAB200BF4D70069E528 /* Agenda */,
 				4726CBAA200BF4BD0069E528 /* Calendar */,
+				476AF590201EFA71002C6FD7 /* Extensions */,
 				4771B71E1FFDC9FC00144A4B /* Assets.xcassets */,
 				4771B7201FFDC9FC00144A4B /* LaunchScreen.storyboard */,
 				4771B7231FFDC9FC00144A4B /* Info.plist */,
@@ -278,13 +298,17 @@
 				4726CBAD200BF5180069E528 /* MasterViewController.swift in Sources */,
 				4701840820003B29004671B6 /* DayCell.swift in Sources */,
 				4726CBAF200C06600069E528 /* AgendaViewController.swift in Sources */,
+				476AF58F201EFA55002C6FD7 /* Calendar.swift in Sources */,
+				476AF594201EFEC5002C6FD7 /* Date.swift in Sources */,
 				47799AB920101D9300CF625C /* Attendee.swift in Sources */,
 				4701840A20043F67004671B6 /* RangedCalendar.swift in Sources */,
+				476AF598201F06C9002C6FD7 /* UILabel.swift in Sources */,
 				47799AB520101BC500CF625C /* Event.swift in Sources */,
 				47FD5BFA2019D13B0003D200 /* AttendeeView.swift in Sources */,
 				4726CBB5200DDA720069E528 /* EventCell.swift in Sources */,
 				4701840620003810004671B6 /* CalendarViewController.swift in Sources */,
 				47DA5275201292EF008B9BEF /* EventsServiceMock.swift in Sources */,
+				476AF596201F03C8002C6FD7 /* TableView.swift in Sources */,
 				47FD5BFE201AA88F0003D200 /* ContinuousSectionsLayout.swift in Sources */,
 				4771B7181FFDC9FC00144A4B /* AppDelegate.swift in Sources */,
 				47FD5BCC201933450003D200 /* NoEventsCell.swift in Sources */,

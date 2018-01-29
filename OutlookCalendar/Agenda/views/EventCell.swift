@@ -84,47 +84,66 @@ class EventCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let timeLabelHeight = timeLabel.text?.size(withAttributes: [NSAttributedStringKey.font: EventCell.secondaryFont]).height ?? 0
-        timeLabel.frame = CGRect(x: EventCell.margin, y: EventCell.margin, width: EventCell.timeLabelWidth, height: timeLabelHeight)
+        // Time label
+        timeLabel.frame = CGRect(x: EventCell.margin,
+                                 y: EventCell.margin,
+                                 width: EventCell.timeLabelWidth,
+                                 height: timeLabel.heightForText)
         
+        // Duration label
+        // durationLabel has the same frame properties like timeLabel, except for the y position
         var durationFrame = timeLabel.frame
         durationFrame.origin.y = timeLabel.frame.maxY + EventCell.spacing
         durationLabel.frame = durationFrame
         
+        
+        // Ctegory view
         categoryView.frame = CGRect(x: timeLabel.frame.maxX,
                                     y: EventCell.margin,
                                     width: EventCell.categoryViewSize,
                                     height: EventCell.categoryViewSize)
-        
         categoryView.layer.cornerRadius = EventCell.categoryViewSize / 2
         categoryView.center.y = timeLabel.center.y
         
+        // Subject label
         let subjectLabelX = categoryView.frame.maxX + EventCell.subjectLabelOffset
-        let subjectLabelHeight = subjectLabel.text?.size(withAttributes: [NSAttributedStringKey.font: EventCell.primaryFont]).height ?? 0
         let subjectLabelWidth = contentView.frame.size.width - subjectLabelX - EventCell.margin
-        subjectLabel.frame = CGRect(x: subjectLabelX, y: EventCell.margin, width: subjectLabelWidth, height: subjectLabelHeight)
+        subjectLabel.frame = CGRect(x: subjectLabelX,
+                                    y: EventCell.margin,
+                                    width: contentView.frame.size.width - subjectLabelX - EventCell.margin,
+                                    height: subjectLabel.heightForText)
         subjectLabel.center.y = categoryView.center.y
 
         var maxY = subjectLabel.frame.maxY
 
+        // Attendees view
         if attendeesView.subviews.count > 0 {
-            attendeesView.frame = CGRect(x: subjectLabelX, y: subjectLabel.frame.maxY + EventCell.spacing, width: EventCell.attendeeViewSize * CGFloat(attendeesView.subviews.count) + EventCell.spacing * CGFloat(attendeesView.subviews.count - 1 ) , height: EventCell.attendeeViewSize)
+            let attendeesViewWidth = EventCell.attendeeViewSize * CGFloat(attendeesView.subviews.count) + EventCell.spacing * CGFloat(attendeesView.subviews.count - 1)
+            attendeesView.frame = CGRect(x: subjectLabelX,
+                                         y: subjectLabel.frame.maxY + EventCell.spacing,
+                                         width: attendeesViewWidth ,
+                                         height: EventCell.attendeeViewSize)
             
             var maxX : CGFloat = 0.0
+            
+            // Layout attendees views
             for view in attendeesView.subviews {
-                view.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)
-                view.frame = CGRect(x: maxX, y: 0.0, width: EventCell.attendeeViewSize, height: EventCell.attendeeViewSize)
+                view.frame = CGRect(x: maxX,
+                                    y: 0,
+                                    width: EventCell.attendeeViewSize,
+                                    height: EventCell.attendeeViewSize)
                 maxX += EventCell.attendeeViewSize + EventCell.spacing
+                view.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)
             }
-
             maxY = attendeesView.frame.maxY
         }
         
-        if let locationText = locationLabel.text,
-            !locationText.isEmpty {
-            let locationLabelHeight = locationLabel.text?.size(withAttributes: [NSAttributedStringKey.font: EventCell.secondaryFont]).height ?? 0
-            locationLabel.frame = CGRect(x: subjectLabelX, y: maxY + EventCell.spacing, width: subjectLabelWidth, height: locationLabelHeight)
-            maxY = locationLabel.frame.maxY
+        // Location label
+        if let locationText = locationLabel.text, !locationText.isEmpty {
+            locationLabel.frame = CGRect(x: subjectLabelX,
+                                         y: maxY + EventCell.spacing,
+                                         width: subjectLabelWidth,
+                                         height: locationLabel.heightForText)
         }
     }
     
@@ -141,11 +160,14 @@ class EventCell: UITableViewCell {
         }
     }
     
+    // Returns the calculated height of the cell
     static func height(for event:Event) -> CGFloat {
         
+        // Size for the right side of the cell (time, duration)
         var rightSizeHeight = event.timeDescription.size(withAttributes: [NSAttributedStringKey.font: secondaryFont]).height + 2 * margin
         rightSizeHeight += event.durationDescription.size(withAttributes: [NSAttributedStringKey.font: secondaryFont]).height + spacing
         
+        // Size for the left side of the cell (subject, attendees, location)
         var leftSizeHeight = event.subject.size(withAttributes: [NSAttributedStringKey.font: primaryFont]).height + 2 * margin
         
         if event.attendees.count > 0 {

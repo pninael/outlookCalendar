@@ -8,10 +8,13 @@
 
 import Foundation
 
+// An event atendee
 struct Attendee {
     let name : String
     let email : String
     
+    // Initialize an attendee from a json
+    // Throws a DataError if the josn could not be deserialized into an attendee
     init(json: [String: Any]) throws {
         guard let name = json["Name"] as? String,
             let email = json["EmailAddress"] as? String

@@ -8,6 +8,7 @@
 
 import UIKit
 
+// A cell to display when there are no events to show
 class NoEventsCell: UITableViewCell {
 
     static var reuseIdentifier = "noEventCell"
@@ -27,20 +28,19 @@ class NoEventsCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         addSubview(noEventsLabel)
     }
     
     override func layoutSubviews() {
         
-        let noEventsLabelHeight = noEventsLabel.text?.size(withAttributes: [NSAttributedStringKey.font: noEventsLabel.font]).height ?? 0
-        noEventsLabel.frame = CGRect(x: NoEventsCell.margin, y: NoEventsCell.margin, width: contentView.frame.size.width - 2 * NoEventsCell.margin, height: noEventsLabelHeight)
+        noEventsLabel.frame = CGRect(x: NoEventsCell.margin, y: NoEventsCell.margin, width: contentView.frame.size.width - 2 * NoEventsCell.margin, height: noEventsLabel.heightForText)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // Returns the calculated height of the cell
     static func height() -> CGFloat {
         let textHeight = text.size(withAttributes: [NSAttributedStringKey.font: font]).height
         return textHeight + 2 * margin
